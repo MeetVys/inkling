@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A conversational tutorial for HTML Doc Kit. Open Claude Code, talk in plain English, watch a live interactive HTML doc grow on disk turn by turn." />
+    <title>HTML Doc Kit — A Friendly Tutorial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,450..750,60&family=Source+Serif+4:opsz,wght@8..60,400..700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="progress" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <div class="shell topbar-inner">
+        <a class="brand" href="#top" aria-label="Back to top">
+          <span class="mark">D</span>
+          <span>
+            <span class="name">HTML Doc Kit</span>
+            <span class="kind">Tutorial · for a friend</span>
+          </span>
+        </a>
+        <div class="actions">
+          <button class="ghost-button" type="button" id="focusToggle" aria-pressed="false">Focus mode</button>
+          <button class="ghost-button" type="button" id="printButton">Print</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="top" class="shell">
+      <!-- HERO -->
+      <section class="hero" aria-labelledby="title">
+        <div>
+          <div class="eyebrow">A tutorial that is itself the tool</div>
+          <h1 id="title" contenteditable="true">Talk to your docs.<br />They will build themselves.</h1>
+          <p class="lede" contenteditable="true">
+            HTML Doc Kit is a conversational doc builder living inside Claude Code.
+            You speak normally. The agent designs and edits a real folder of HTML, CSS,
+            JavaScript, and data on your disk. Every doc is interactive, computational,
+            aesthetic, and warm — and grows turn by turn as you think out loud.
+          </p>
+        </div>
+        <aside class="cta" aria-label="Try this exact prompt">
+          <div class="label">Type this in Claude Code</div>
+          <div class="prompt" contenteditable="true">
+            Hey, create an HTML doc that explains the Q1 onboarding revamp. Use a flowchart for the funnel and a chart for the drop-off CSV I'm about to paste.
+          </div>
+          <p class="note">No slash commands. No markup. Just say what you want — the agent does the rest.</p>
+        </aside>
+      </section>
+
+      <!-- FLOW -->
+      <section class="section" aria-labelledby="flow-h">
+        <div class="eyebrow">The primary flow</div>
+        <h2 id="flow-h">What happens between your message and the live doc</h2>
+        <p class="intro">Click any step to see what the agent does, and what you see.</p>
+
+        <div class="flow-stepper" data-flow>
+          <div class="steps" role="tablist" aria-label="Flow steps"></div>
+          <div class="panel">
+            <div class="text"></div>
+            <div class="example"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONVERSATION SIMULATOR -->
+      <section class="section" aria-labelledby="convo-h">
+        <div class="eyebrow">A typical session</div>
+        <h2 id="convo-h">Six turns that build a real doc</h2>
+        <p class="intro">
+          A simulated conversation with the agent — friend talks on the left, the agent
+          reports on the right with the files it actually touched. Notice you never see a
+          slash command.
+        </p>
+
+        <div class="convo">
+          <!-- turn 1 -->
+          <div class="turn">
+            <div class="friend">
+              <div class="who">Friend</div>
+              <div class="says">Hey, create an HTML doc for our Q1 onboarding revamp. It will have a funnel chart and a few sections.</div>
+            </div>
+            <div class="agent">
+              <div class="who">Claude</div>
+              <div class="does">
+                Got it. Started a new doc at <code>docs/2026-05-14-onboarding-revamp/</code>.
+                The chassis isn't decided yet — that gets designed on the first real content add.
+                Just told you what verb I picked: <span class="verb-chip">new</span>
+              </div>
+              <div class="chips">
+                <span class="file-chip added">+ index.html</span>
+                <span class="file-chip added">+ style.css</span>
+                <span class="file-chip added">+ runtime.js</span>
+                <span class="file-chip added">+ doc-source.json</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- turn 2 -->
+          <div class="turn">
+            <div class="friend">
+              <div class="who">Friend</div>
+              <div class="says">Here's the drop-off CSV. Parse it and show a bar chart. <br /><br /><code>step,users<br />Landing,4200<br />Signup,2100<br />Verify,900<br />Activate,540</code></div>
+            </div>
+            <div class="agent">
+              <div class="who">Claude</div>
+              <div class="does">
+                Copied the CSV into the doc as <code>data/funnel.csv</code> so the chart
+                is reactive — edit the file, the chart updates on reload. Designed a
+                <strong>dashboard chassis</strong> because the first content was data-shaped,
+                not prose-shaped. Invented one new behavior: <code>renderFunnelChart</code>
+                with paper-warmed bars. <span class="verb-chip">add</span>
+              </div>
+              <div class="chips">
+                <span class="file-chip">~ index.html</span>
+                <span class="file-chip">~ style.css</span>
+                <span class="file-chip">~ runtime.js</span>
+                <span class="file-chip added">+ data/funnel.csv</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- turn 3 -->
+          <div class="turn">
+            <div class="friend">
+              <div class="who">Friend</div>
+              <div class="says">Now add a section titled "What we changed" with three principles: simplify, surface, sequence.</div>
+            </div>
+            <div class="agent">
+              <div class="who">Claude</div>
+              <div class="does">
+                Added a principles section under the chart. Three numbered cards.
+                Reused the existing token palette but invented a new
+                <strong>three-principle chassis</strong> for this doc — narrower cards,
+                clay accent on the numerals. <span class="verb-chip">add</span>
+              </div>
+              <div class="chips">
+                <span class="file-chip">~ index.html</span>
+                <span class="file-chip">~ style.css</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- turn 4 -->
+          <div class="turn">
+            <div class="friend">
+              <div class="who">Friend</div>
+              <div class="says">Actually, change the chart to show conversion percentages instead of raw counts.</div>
+            </div>
+            <div class="agent">
+              <div class="who">Claude</div>
+              <div class="does">
+                Edited the chart to compute each step as a percentage of Landing.
+                Updated the chart legend, recomputed the bars. The CSV stays raw —
+                the math is in <code>runtime.js</code>, so when you swap in new data later
+                the percentages recompute automatically. <span class="verb-chip">edit</span>
+              </div>
+              <div class="chips">
+                <span class="file-chip">~ index.html</span>
+                <span class="file-chip">~ runtime.js</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- turn 5 -->
+          <div class="turn">
+            <div class="friend">
+              <div class="who">Friend</div>
+              <div class="says">Drop the "What we changed" section. We're going to rewrite it differently.</div>
+            </div>
+            <div class="agent">
+              <div class="who">Claude</div>
+              <div class="does">
+                Removed the principles section, plus the styles and any classes that no
+                longer have a reference. Recorded a <code>remove</code> event in the log so
+                we can replay or undo later. <span class="verb-chip">remove</span>
+              </div>
+              <div class="chips">
+                <span class="file-chip">~ index.html</span>
+                <span class="file-chip">~ style.css</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- turn 6 -->
+          <div class="turn">
+            <div class="friend">
+              <div class="who">Friend</div>
+              <div class="says">Open it. I want to see it.</div>
+            </div>
+            <div class="agent">
+              <div class="who">Claude</div>
+              <div class="does">
+                Opened it in your browser:
+                <code>docs/2026-05-14-onboarding-revamp/index.html</code>.
+                Five-axis audit on the doc as it stands now —
+                <strong>Interactive 8, Computational 7, Aesthetic 8, Warm 9, Originality 8.</strong>
+                <span class="verb-chip">show</span>
+              </div>
+              <div class="chips"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ANATOMY -->
+      <section class="section" aria-labelledby="anatomy-h">
+        <div class="eyebrow">What a doc actually is</div>
+        <h2 id="anatomy-h">Anatomy of a doc folder</h2>
+        <p class="intro">
+          A doc isn't a file — it's a folder. Click any node in the tree to learn
+          what each file does and why it's there.
+        </p>
+
+        <div class="anatomy" data-anatomy>
+          <div class="tree" aria-label="Folder tree">
+            <div class="root">docs/&lt;slug&gt;/</div>
+            <button data-file="index">index.html</button>
+            <button data-file="style">style.css</button>
+            <button data-file="runtime">runtime.js</button>
+            <button data-file="manifest">doc-source.json</button>
+            <div class="indent">
+              <button data-file="data">data/</button>
+              <button data-file="assets">assets/</button>
+            </div>
+          </div>
+          <div class="detail" role="region" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <!-- COMPARE -->
+      <section class="section" aria-labelledby="compare-h">
+        <div class="eyebrow">Why not just Markdown?</div>
+        <h2 id="compare-h">The same content, two formats</h2>
+        <p class="intro">
+          Toggle between Markdown and Doc Kit views of the same Q1 funnel. The
+          Markdown version is what you'd get from a standard agent. The Doc Kit
+          version is what this tool produces.
+        </p>
+
+        <div class="compare" data-compare>
+          <div class="tabs" role="tablist">
+            <button class="tab" type="button" data-key="md" aria-pressed="true">Markdown world</button>
+            <button class="tab" type="button" data-key="doc">Doc Kit world</button>
+          </div>
+          <div class="panels">
+            <div class="panel md-panel" data-key="md" data-active="true"># Q1 Onboarding Funnel
+
+The funnel has four steps. Counts shown below.
+
+| Step      | Users |
+|-----------|-------|
+| Landing   | 4200  |
+| Signup    | 2100  |
+| Verify    | 900   |
+| Activate  | 540   |
+
+The biggest drop-off is between Verify and Activate (40% loss).</div>
+            <div class="panel doc-panel" data-key="doc" data-active="false">
+              <h3 class="demo-title">Q1 Onboarding Funnel</h3>
+              <p class="demo-prose">The funnel has four steps. Activation lands at <strong style="color: var(--clay-dark);">12.9%</strong> of Landing.</p>
+              <div class="demo-chart" aria-label="Funnel chart, conversion percentages">
+                <div class="row">
+                  <span class="label">Landing</span>
+                  <div class="bar" style="width: 100%;"></div>
+                  <span class="val">100%</span>
+                </div>
+                <div class="row">
+                  <span class="label">Signup</span>
+                  <div class="bar" style="width: 50%;"></div>
+                  <span class="val">50.0%</span>
+                </div>
+                <div class="row">
+                  <span class="label">Verify</span>
+                  <div class="bar" style="width: 21.4%;"></div>
+                  <span class="val">21.4%</span>
+                </div>
+                <div class="row">
+                  <span class="label">Activate</span>
+                  <div class="bar" style="width: 12.9%;"></div>
+                  <span class="val">12.9%</span>
+                </div>
+              </div>
+              <p class="demo-prose" style="font-size: 14px; color: var(--ink-muted);">
+                Edit <code>data/funnel.csv</code> — these bars update on reload.
+                That's the difference: data is bound, not pasted.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TRY IT -->
+      <section class="section" aria-labelledby="try-h">
+        <div class="eyebrow">Your turn</div>
+        <h2 id="try-h">Start your first doc in two messages</h2>
+        <p class="intro">
+          Open Claude Code in any folder. Paste the first prompt. After it replies,
+          paste the second. That's it.
+        </p>
+
+        <div class="try-it">
+          <div class="card">
+            <div class="step-n">Message 01</div>
+            <h3>Start the doc</h3>
+            <p>Tell the agent what the doc is for. No slash commands. No template names. Just intent.</p>
+            <div class="prompt">Hey, create an HTML doc that captures my notes on [topic]. It should be interactive and feel like a notebook, not a memo.</div>
+          </div>
+          <div class="card">
+            <div class="step-n">Message 02</div>
+            <h3>Add something real</h3>
+            <p>Paste data, an image, a section, anything. The agent reads your intent and edits the live folder.</p>
+            <div class="prompt">Now add a chart from this data. <br /><br />step,users<br />A,100<br />B,72<br />C,40</div>
+          </div>
+          <div class="card">
+            <div class="step-n">Message 03 (optional)</div>
+            <h3>Iterate naturally</h3>
+            <p>Change anything. Move things around. Drop sections. The agent maintains state across turns — you don't have to re-state which doc you mean.</p>
+            <div class="prompt">Make the chart use percentages. Add a footer with my name and today's date.</div>
+          </div>
+          <div class="card">
+            <div class="step-n">Message 04 (optional)</div>
+            <h3>See it</h3>
+            <p>Ask to view it. The agent opens the rendered <code>index.html</code> in your browser.</p>
+            <div class="prompt">Open the doc. I want to see how it looks.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- META FOOTER -->
+      <section class="meta-foot" data-event-log aria-labelledby="meta-h">
+        <h2 id="meta-h" style="font-family: var(--serif-display); font-weight: 600; font-size: 24px; margin: 0 0 12px;">This page was built by Doc Kit</h2>
+        <p class="lede">
+          You're looking at the output of the same tool the page describes. Below is
+          the event log this page produced as it was being built — read directly from
+          its <code>doc-source.json</code>. This is the meta-computational pillar in action.
+        </p>
+        <details>
+          <summary>Reveal the event log</summary>
+          <pre>(loading…)</pre>
+        </details>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="shell">HTML Doc Kit · v0.2 · conversational · folder-as-source-of-truth</div>
+    </footer>
+
+    <!-- data tags consumed by runtime.js -->
+    <script type="application/json" id="flow-data">[
+      {
+        "title": "You speak",
+        "what": "Natural language, plain English",
+        "detail": "You open Claude Code and type. No slash commands. No markup. Whatever you would say to a collaborator. \"Create an HTML doc for X.\" \"Add a chart from this data.\" \"Drop that section.\"",
+        "example": "<span class=\"you\">You:</span> Hey, make me an HTML doc about the Q1 onboarding funnel."
+      },
+      {
+        "title": "Agent routes",
+        "what": "Intent recognised, verb chosen silently",
+        "detail": "The agent maps your message to one of its internal verbs (new, add, edit, remove, show, freeze, replay). You never see this step — it just happens.",
+        "example": "<span class=\"agent\">Agent (internal):</span> intent → new; title = Q1 onboarding funnel; slug = 2026-05-14-onboarding-funnel"
+      },
+      {
+        "title": "Agent edits",
+        "what": "The live doc folder gets updated",
+        "detail": "Whichever files need to change, do. index.html, style.css, runtime.js, data/*.csv, assets/*.png — all edited in place. The doc folder is the source of truth, not a markdown file.",
+        "example": "<span class=\"files\">+ docs/&lt;slug&gt;/index.html\n+ docs/&lt;slug&gt;/style.css\n+ docs/&lt;slug&gt;/runtime.js\n+ docs/&lt;slug&gt;/doc-source.json</span>"
+      },
+      {
+        "title": "Agent records & audits",
+        "what": "Event appended, five axes scored",
+        "detail": "An event entry lands in doc-source.json with the verbatim instruction, files touched, structures and behaviors invented, and a one-line summary. The doc is then scored on five axes: Interactive, Computational, Aesthetic, Warm, Originality. Originality below 5 = redo.",
+        "example": "<span class=\"agent\">event #1:</span> verb=new · files=[index.html, style.css, runtime.js, doc-source.json] · summary=\"Created empty scaffold with warm-notebook tokens; chassis deferred to first content add.\""
+      },
+      {
+        "title": "You see",
+        "what": "Plain-English report, ready for the next turn",
+        "detail": "The agent tells you in plain English what it just did — which files changed, what got invented, what the audit looked like. You can keep talking. State carries forward; the current doc context is implicit.",
+        "example": "<span class=\"agent\">Agent:</span> Started a new doc at docs/2026-05-14-onboarding-funnel/. Chassis isn't decided yet — that happens on the first real content add."
+      }
+    ]</script>
+
+    <script type="application/json" id="anatomy-data">[
+      {
+        "key": "index",
+        "path": "index.html",
+        "title": "The document itself",
+        "role": "Structural — what you see",
+        "body": "The markup. Hero, sections, every interactive component the doc earned. Each <section> is a structural shape the agent picked or invented for this specific doc — never a copy-paste from a template menu.",
+        "bullets": [
+          "Loads style.css and runtime.js by relative path",
+          "Carries inline JSON data tags consumed by runtime primitives",
+          "Survives without a server — opens directly from file://"
+        ]
+      },
+      {
+        "key": "style",
+        "path": "style.css",
+        "title": "Tokens inherited, layout authored fresh",
+        "role": "Visual — how it feels",
+        "body": "Inherits the warm-notebook tokens (color, type, spacing) so every doc in the kit looks like part of the same library. Beyond tokens, the layout and chassis are authored fresh for this specific doc.",
+        "bullets": [
+          "Tokens carry forward; chassis does not",
+          "Per-event extensions appended with comment markers",
+          "No inline style=\"\" attributes anywhere"
+        ]
+      },
+      {
+        "key": "runtime",
+        "path": "runtime.js",
+        "title": "Chrome + behavioral primitives",
+        "role": "Behavioral — what the doc can do",
+        "body": "Holds the UI chrome (progress bar, focus toggle, print) plus any computational behaviors this doc earned. Each invented primitive carries a comment marker so the agent can find it again on the next event.",
+        "bullets": [
+          "parseCsv, renderBarChart, clickToExplain, glossary, and whatever this doc invented",
+          "window.docKit exports primitives for per-doc inline scripts",
+          "Pinned at the latest event's state for archive permanence"
+        ]
+      },
+      {
+        "key": "manifest",
+        "path": "doc-source.json",
+        "title": "The lossless history of the doc",
+        "role": "Provenance — how it was built",
+        "body": "An append-only event log. Every new, add, edit, remove appends one entry. The doc can be replayed deterministically from this log to verify it isn't drifting. The agent reads this on every turn to keep context.",
+        "bullets": [
+          "events[]: timestamp, verb, instruction, files touched, summary",
+          "structures_invented and behaviors_invented per event",
+          "doc_audit: live five-axis scoreboard"
+        ]
+      },
+      {
+        "key": "data",
+        "path": "data/",
+        "title": "Bound data, not pasted numbers",
+        "role": "Reactive — edits propagate",
+        "body": "Any CSV, JSON, or tabular data the doc references lives here. Charts and tables bind to these files by relative path, so editing the data updates the rendered output on reload. This is what makes the kit computational instead of decorative.",
+        "bullets": [
+          "Created lazily on first event that adds data",
+          "Each file's sha256 recorded in the manifest",
+          "Stays inside the doc folder — portable as a unit"
+        ]
+      },
+      {
+        "key": "assets",
+        "path": "assets/",
+        "title": "Images and static files",
+        "role": "Portable — travels with the doc",
+        "body": "Anything else the doc references — images, icons, fonts you want bundled, downloads. Lives inside the doc folder so the artifact is self-contained. Optional freeze step inlines these as data URLs for single-file sharing.",
+        "bullets": [
+          "Created lazily on first event that adds an asset",
+          "Referenced by relative path in index.html",
+          "Inlined as base64 by the freeze verb when needed"
+        ]
+      }
+    ]</script>
+
+    <script src="runtime.js"></script>
+  </body>
+</html>

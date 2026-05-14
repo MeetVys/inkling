@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="HTML Doc Kit vision: a personal kit for ideas, vision docs, HLDs, LLDs, and learning notes — agent-generated, single-file, warm, readable, interactive HTML."
+    />
+    <title>HTML Doc Kit — Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,450..750,60&family=Source+Serif+4:opsz,wght@8..60,400..700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="progress" aria-hidden="true"></div>
+    <header class="topbar">
+      <div class="shell topbar-inner">
+        <a class="brand" href="#top" aria-label="Back to top">
+          <span class="mark">HD</span>
+          <span>
+            <strong>HTML Doc Kit</strong>
+            <span>Vision document</span>
+          </span>
+        </a>
+        <nav class="nav" aria-label="Document sections">
+          <a href="#why">Why</a>
+          <a href="#principles">Principles</a>
+          <a href="#kit">Kit</a>
+          <a href="#workflow">Workflow</a>
+          <a href="#components">Components</a>
+          <a href="#decisions">Decisions</a>
+          <a href="#non-goals">Non-goals</a>
+          <a href="#roadmap">Roadmap</a>
+          <a href="#success">Success</a>
+          <a href="#open-questions">Questions</a>
+        </nav>
+        <div class="actions">
+          <button class="ghost-button" type="button" id="focusToggle" aria-pressed="false">
+            Focus mode
+          </button>
+          <button class="ghost-button" type="button" id="printButton">Print</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="top" class="shell">
+      <section class="hero" aria-labelledby="title">
+        <div>
+          <p class="eyebrow">Personal knowledge artifact</p>
+          <h1 id="title" class="editable" contenteditable="true">
+            HTML Doc Kit — Vision.
+          </h1>
+          <p class="lede editable" contenteditable="true">
+            A personal document kit for ideas, vision docs, HLDs, LLDs, and learning notes:
+            agent-generated, single-file, warm, readable, interactive HTML.
+          </p>
+        </div>
+
+        <aside class="hero-card" aria-label="Thesis">
+          <span class="stamp">Working thesis</span>
+          <p class="thesis editable" contenteditable="true">
+            Markdown is good for writing. HTML can be good for wanting to read what you wrote.
+          </p>
+          <div class="metadata">
+            <div class="meta-item">
+              <span>Project</span>
+              <strong>HTML_Docs</strong>
+            </div>
+            <div class="meta-item">
+              <span>Status</span>
+              <strong>V0 bootstrap</strong>
+            </div>
+            <div class="meta-item">
+              <span>Doc type</span>
+              <strong>Vision</strong>
+            </div>
+            <div class="meta-item">
+              <span>Theme</span>
+              <strong>Warm notebook</strong>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="why" class="section">
+        <div class="section-grid">
+          <aside class="section-kicker">01 / Why this exists</aside>
+          <div class="prose">
+            <h2>Markdown is excellent. What it can't carry is the ceiling.</h2>
+            <p>
+              Markdown is excellent as a low-friction writing surface. Agents produce it quickly.
+              Humans can diff it, copy it, and publish it almost anywhere. But for high-value
+              thinking documents, Markdown often makes the output feel unfinished.
+            </p>
+            <p>
+              The missing quality is desire. A vision doc should feel like something worth
+              returning to. An architecture doc should make the system easier to hold in your
+              head. A learning note should feel like a field guide, not a dumped transcript.
+            </p>
+            <div class="pullquote editable" contenteditable="true">
+              The goal is not prettier notes. The goal is notes that pull you back into the
+              thinking.
+            </div>
+            <div class="note-grid" aria-label="The bet">
+              <article class="note-card">
+                <strong>Markdown keeps</strong>
+                <p>Speed, portability, version control, agent friendliness, and plain text clarity.</p>
+              </article>
+              <article class="note-card">
+                <strong>HTML adds</strong>
+                <p>Layout, interaction, diagrams, navigation, print polish, and visual hierarchy.</p>
+              </article>
+              <article class="note-card">
+                <strong>The bet</strong>
+                <p>The agent can absorb the complexity, while the human keeps the writing flow.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="principles" class="section">
+        <div class="section-grid">
+          <aside class="section-kicker">02 / Principles</aside>
+          <div>
+            <h2>What this kit must believe.</h2>
+            <div class="principles">
+              <article class="principle">
+                <span class="number">Principle 01</span>
+                <h3>Writing stays easy.</h3>
+                <p>
+                  The user should not hand-author elaborate HTML. The agent should transform
+                  natural-language intent into a polished document.
+                </p>
+              </article>
+              <article class="principle">
+                <span class="number">Principle 02</span>
+                <h3>Beauty serves return visits.</h3>
+                <p>
+                  The visual system should make the document feel calm, serious, and inviting,
+                  like a notebook you want to reopen.
+                </p>
+              </article>
+              <article class="principle">
+                <span class="number">Principle 03</span>
+                <h3>Interaction must explain.</h3>
+                <p>
+                  Interactivity is only worth adding when it clarifies structure: diagrams,
+                  decision trees, timelines, comparisons, and drills into detail.
+                </p>
+              </article>
+              <article class="principle">
+                <span class="number">Principle 04</span>
+                <h3>One file should be enough.</h3>
+                <p>
+                  The default artifact should open in a browser, survive archiving, be easy to
+                  share, and require no app or server.
+                </p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="kit" class="section">
+        <div class="section-grid">
+          <aside class="section-kicker">03 / The first kit</aside>
+          <div class="prose">
+            <h2>Start with four document types, not a platform.</h2>
+            <p>
+              The first version should be a disciplined set of document templates for the docs
+              already being written. Keep the scope personal, useful, and shippable.
+            </p>
+            <div class="doc-types">
+              <article class="doc-type">
+                <strong>Vision</strong>
+                <p>
+                  Why something should exist, what it believes, what success looks like, what is
+                  out of scope. Sections: Thesis · Why now · User &amp; problem · Principles ·
+                  Non-goals · Risks · Roadmap.
+                </p>
+                <span class="pill">Start here</span>
+              </article>
+              <article class="doc-type">
+                <strong>HLD</strong>
+                <p>
+                  The high-level system design. Sections: System overview · Architecture diagram ·
+                  Major components · Data flow · Boundaries · Tradeoffs · Risks.
+                </p>
+                <span class="pill">Architecture</span>
+              </article>
+              <article class="doc-type">
+                <strong>LLD</strong>
+                <p>
+                  The implementation-level design. Sections: APIs · Schemas · Classes &amp;
+                  modules · State transitions · Edge cases · Error handling · Test plan.
+                </p>
+                <span class="pill">Execution</span>
+              </article>
+              <article class="doc-type">
+                <strong>Learning</strong>
+                <p>
+                  Material easier to revisit and internalize. Sections: Concept map · Key ideas ·
+                  Examples · Mental models · Misconceptions · Exercises · References.
+                </p>
+                <span class="pill">Study</span>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="workflow" class="section">
+        <div class="section-grid">
+          <aside class="section-kicker">04 / Authoring workflow</aside>
+          <div>
+            <h2>The agent becomes the layout engine.</h2>
+            <div class="flow-wrap">
+              <div class="flow-header">
+                <p>
+                  Click each stage. The human thinks in language; the agent turns that thinking
+                  into a durable artifact.
+                </p>
+                <span class="pill">Interactive diagram</span>
+              </div>
+              <div class="flow" role="list" aria-label="HTML Doc Kit workflow">
+                <button class="flow-node active" type="button" data-step="capture" role="listitem">
+                  <span>Step 1</span>
+                  <strong>Capture</strong>
+                </button>
+                <button class="flow-node" type="button" data-step="shape" role="listitem">
+                  <span>Step 2</span>
+                  <strong>Shape</strong>
+                </button>
+                <button class="flow-node" type="button" data-step="render" role="listitem">
+                  <span>Step 3</span>
+                  <strong>Render</strong>
+                </button>
+                <button class="flow-node" type="button" data-step="interact" role="listitem">
+                  <span>Step 4</span>
+                  <strong>Interact</strong>
+                </button>
+                <button class="flow-node" type="button" data-step="archive" role="listitem">
+                  <span>Step 5</span>
+                  <strong>Archive</strong>
+                </button>
+              </div>
+              <div class="flow-detail" aria-live="polite">
+                <h3 id="flowTitle">Capture raw thinking</h3>
+                <p id="flowText">
+                  Start with messy intent: a voice note, a pasted chat, a rough bullet list, or
+                  a half-formed idea. The source can stay informal.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="components" class="section">
+        <div class="section-grid">
+          <aside class="section-kicker">05 / Reusable components</aside>
+          <div class="prose">
+            <h2>The kit should carry thinking patterns, not just CSS.</h2>
+            <p>
+              A good doc kit gives agents reliable building blocks for common thinking moves.
+              These are the patterns the first version should carry.
+            </p>
+            <ul class="clean">
+              <li>Framing notes — small cards that set context before the prose.</li>
+              <li>Decision records — what was chosen, what was rejected, and why.</li>
+              <li>Alternatives — explicit side-by-side options with tradeoffs.</li>
+              <li>Tradeoff tables — comparable rows on shared dimensions.</li>
+              <li>Risk registers — what could break, ranked.</li>
+              <li>Architecture diagrams — clickable nodes that explain themselves.</li>
+              <li>Timelines — sequenced steps with detail on demand.</li>
+              <li>Glossaries — light up terms inline as you read.</li>
+              <li>Next-action blocks — the call-to-do at the end of a doc.</li>
+              <li>Print-friendly summaries — a compact one-pager hidden in the same artifact.</li>
+            </ul>
+            <article class="callout">
+              <strong>Not Markdown with nicer CSS</strong>
+              <p>
+                The document is designed as HTML from the beginning. Navigation, hierarchy,
+                interactive diagrams, print styles, and reusable components are first-class. It
+                is a better artifact format for serious personal docs, not a prettier export
+                target.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="decisions" class="section">
+        <div class="section-grid">
+          <aside class="section-kicker">06 / Initial decisions</aside>
+          <div>
+            <h2>The decisions taken so far.</h2>
+            <div class="component-demo">
+              <article class="callout">
+                <strong>Default to single-file HTML</strong>
+                <p>
+                  Default to single-file HTML artifacts first. Do not build a notes app until the
+                  personal documents are clearly valuable.
+                </p>
+              </article>
+              <article class="callout">
+                <strong>Keep raw authoring optional</strong>
+                <p>
+                  The user should not need to write HTML directly. Raw HTML is an output format,
+                  not the thinking interface.
+                </p>
+              </article>
+            </div>
+            <div class="decision-list">
+              <details open>
+                <summary>Make structural edits agent-led</summary>
+                <p>
+                  Text blocks can be editable in the browser for lightweight tweaks. Structural
+                  edits should still be handled by the agent so the file stays coherent.
+                </p>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="non-goals" class="section">
+        <div class="section-grid">
+          <aside class="section-kicker">07 / Non-goals</aside>
+          <div class="prose">
+            <h2>What this is explicitly not.</h2>
+            <article class="callout" data-tone="sage">
+              <strong>Not in scope</strong>
+              <ul class="clean">
+                <li>Do not replace Notion, Obsidian, or a CMS in v1.</li>
+                <li>Do not build a full app before proving the personal artifact workflow.</li>
+                <li>Do not add interaction for decoration.</li>
+                <li>Do not make every note feel like a mini website.</li>
+                <li>Do not require a build step for the default output.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="roadmap" class="section">
+        <div class="section-grid">
+          <aside class="section-kicker">08 / Roadmap</aside>
+          <div>
+            <h2>A practical path from one file to a system.</h2>
+            <div class="roadmap">
+              <article class="roadmap-phase">
+                <h3>V0: Personal artifact</h3>
+                <ul class="clean">
+                  <li>Create the four HTML templates.</li>
+                  <li>Use them for real docs for two weeks.</li>
+                  <li>Keep only components that get reused.</li>
+                </ul>
+              </article>
+              <article class="roadmap-phase">
+                <h3>V1: Doc kit</h3>
+                <ul class="clean">
+                  <li>Add a shared design system.</li>
+                  <li>Create prompts for each document type.</li>
+                  <li>Add reusable interactive diagrams.</li>
+                  <li>Establish a small component vocabulary.</li>
+                </ul>
+              </article>
+              <article class="roadmap-phase">
+                <h3>V2: Product surface</h3>
+                <ul class="clean">
+                  <li>Package examples into a gallery.</li>
+                  <li>Let others generate docs from prompts.</li>
+                  <li>Explore whether people want this beyond personal use.</li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="success" class="section">
+        <div class="section-grid">
+          <aside class="section-kicker">09 / Success criteria</aside>
+          <div class="prose">
+            <h2>This is working if…</h2>
+            <ul class="clean">
+              <li>The generated HTML docs are more pleasant to revisit than Markdown.</li>
+              <li>The authoring workflow stays as fast as asking an agent for a Markdown doc.</li>
+              <li>The same visual language works across vision, HLD, LLD, and learning notes.</li>
+              <li>Interactive elements make hard ideas easier to understand.</li>
+              <li>The documents feel archive-worthy.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="open-questions" class="section">
+        <div class="section-grid">
+          <aside class="section-kicker">10 / Open questions</aside>
+          <div class="prose">
+            <h2>What we still don't know.</h2>
+            <div class="decision-list">
+              <details open>
+                <summary>Should Markdown remain the source of truth?</summary>
+                <p>
+                  With HTML as the rendered artifact, Markdown stays diff-friendly and
+                  agent-friendly. The render is the artifact; the markdown is the seed.
+                </p>
+              </details>
+              <details>
+                <summary>Should HTML files include editable regions, or should edits go through the agent?</summary>
+                <p>
+                  Lightweight text edits in the browser are useful. Structural edits should still
+                  be agent-led so the file stays coherent.
+                </p>
+              </details>
+              <details>
+                <summary>How much JavaScript is acceptable in a single-file knowledge artifact?</summary>
+                <p>
+                  Enough to enable interaction that explains structure; not enough to require a
+                  bundler. The runtime should fit in a few kilobytes.
+                </p>
+              </details>
+              <details>
+                <summary>Should the design system feel like a book, a notebook, a magazine, or a field guide?</summary>
+                <p>
+                  Start with one warm-notebook theme and earn more themes by writing docs that
+                  visibly want them.
+                </p>
+              </details>
+              <details>
+                <summary>What is the minimum component set that covers 80% of serious docs?</summary>
+                <p>
+                  Find out by writing real docs and watching what the agent reaches for twice.
+                  V1 extracts the recurring ones into a shared kit.
+                </p>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="shell">
+        HTML Doc Kit · Vision · rendered through /doc · 2026-05-14 · warm-notebook theme · V0
+        bootstrap. Folder artifact: open <code>index.html</code> in any browser, today or a
+        decade from now.
+      </div>
+    </footer>
+
+    <script type="application/json" id="flow-details">
+      {
+        "capture": {
+          "title": "Capture raw thinking",
+          "text": "Start with messy intent: a voice note, a pasted chat, a rough bullet list, or a half-formed idea. The source can stay informal."
+        },
+        "shape": {
+          "title": "Shape into a doc type",
+          "text": "Pick the right frame: vision, HLD, LLD, or learning note. The template gives the agent a strong structure before it writes."
+        },
+        "render": {
+          "title": "Render as warm HTML",
+          "text": "The agent writes semantic HTML, applies the shared theme, and chooses components that make the document easier to scan and revisit."
+        },
+        "interact": {
+          "title": "Interact where it helps",
+          "text": "Diagrams, timelines, comparisons, and decisions can become clickable. Interaction is used for understanding, not decoration."
+        },
+        "archive": {
+          "title": "Archive and reuse",
+          "text": "The finished file opens in any browser, prints cleanly, and becomes a reference for the next generated doc."
+        }
+      }
+    </script>
+    <script src="runtime.js"></script>
+  </body>
+</html>

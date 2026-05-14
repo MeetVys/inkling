@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="How the /doc skill works: the four pillars, the pipeline, the four output files, the starter visual vocabulary, the computational behaviors, and when to reach for it."
+    />
+    <title>/doc — Explained</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,450..750,60&family=Source+Serif+4:opsz,wght@8..60,400..700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="progress" aria-hidden="true"></div>
+    <header class="topbar">
+      <div class="shell topbar-inner">
+        <a class="brand" href="#top" aria-label="Back to top">
+          <span class="mark">HD</span>
+          <span>
+            <strong>HTML Doc Kit</strong>
+            <span>How /doc works</span>
+          </span>
+        </a>
+        <nav class="nav" aria-label="Document sections">
+          <a href="#what">What</a>
+          <a href="#pillars">Pillars</a>
+          <a href="#pipeline">Pipeline</a>
+          <a href="#files">Files</a>
+          <a href="#visual">Visual</a>
+          <a href="#behaviors">Behaviors</a>
+          <a href="#when">When</a>
+          <a href="#scope">V0 scope</a>
+          <a href="#system">System</a>
+          <a href="#try">Try it</a>
+        </nav>
+        <div class="actions">
+          <button class="ghost-button" type="button" id="focusToggle" aria-pressed="false">
+            Focus mode
+          </button>
+          <button class="ghost-button" type="button" id="printButton">Print</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="top" class="shell">
+      <section class="hero" aria-labelledby="title">
+        <div>
+          <p class="eyebrow">Skill reference</p>
+          <h1 id="title" class="editable" contenteditable="true">
+            From markdown intent to interactive HTML.
+          </h1>
+          <p class="lede editable" contenteditable="true">
+            A walkthrough of the <code>/doc</code> skill: the four pillars, how the pipeline runs,
+            what it writes, what it computes, and when to reach for it.
+          </p>
+        </div>
+
+        <aside class="hero-card" aria-label="Thesis">
+          <span class="stamp">Working thesis</span>
+          <p class="thesis editable" contenteditable="true">
+            Markdown is the seed. The folder is the artifact. The agent is the layout engine — and the behavior author.
+          </p>
+          <div class="metadata">
+            <div class="meta-item">
+              <span>Skill</span>
+              <strong>/doc</strong>
+            </div>
+            <div class="meta-item">
+              <span>Version</span>
+              <strong>V0 — 2026-05-14</strong>
+            </div>
+            <div class="meta-item">
+              <span>Pillars</span>
+              <strong>I · C · A · W</strong>
+            </div>
+            <div class="meta-item">
+              <span>Layer</span>
+              <strong>1 of 3</strong>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="what" class="section">
+        <div class="section-grid">
+          <aside class="section-kicker">01 / What it does</aside>
+          <div class="prose">
+            <h2>Three moves, every time.</h2>
+            <p>
+              <code>/doc</code> turns a messy markdown source into a self-contained HTML folder.
+              It is one skill doing three jobs in sequence — and the second job is the most
+              important and the easiest to skip.
+            </p>
+            <div class="note-grid" aria-label="The three moves">
+              <article class="note-card">
+                <strong>Reads intent</strong>
+                <p>
+                  Any markdown file you point it at, plus its own knowledge of vision-shaped,
+                  HLD-shaped, LLD-shaped, and learning-shaped docs.
+                </p>
+              </article>
+              <article class="note-card">
+                <strong>Designs the doc</strong>
+                <p>
+                  Not "which template fits." Which behaviors does this doc want? Which
+                  diagrams? Which computations? Which interactions? The agent answers per doc.
+                </p>
+              </article>
+              <article class="note-card">
+                <strong>Composes &amp; emits</strong>
+                <p>
+                  Reaches into the starter visual vocabulary for the easy parts, invents
+                  computational behaviors for everything else, writes a 4-file folder.
+                </p>
+              </article>
+            </div>
+            <p>
+              The folder is the artifact. Each one stands alone — your 2026 doc reads the same
+              in 2030 because the CSS and JS are pinned next to it at render time.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="pillars" class="section">
+        <div class="section-grid">
+          <aside class="section-kicker">02 / The four pillars</aside>
+          <div>
+            <h2>Interactive · Computational · Aesthetic · Warm.</h2>
+            <div class="prose">
+              <p>
+                Premise 4 of the design doc. All four, together, no subset. A doc that lands only
+                three is a regression — record what is missing and fix it before declaring done.
+              </p>
+            </div>
+            <div class="pillars" aria-label="Four pillars">
+              <article class="pillar">
+                <span class="pillar-mark">Pillar 01 · Interactive</span>
+                <h3>The doc reacts.</h3>
+                <p>
+                  Click-to-explain, decision walkthroughs, drawers, glossary popovers, scroll-spy,
+                  focus mode. The reader does things; the doc responds.
+                </p>
+              </article>
+              <article class="pillar">
+                <span class="pillar-mark">Pillar 02 · Computational</span>
+                <h3>The doc computes.</h3>
+                <p>
+                  Parses inline CSV/JSON and renders charts. Walks decision trees from source
+                  data. Highlights jargon dynamically. The doc <em>does</em> math, not just
+                  describes it.
+                </p>
+              </article>
+              <article class="pillar">
+                <span class="pillar-mark">Pillar 03 · Aesthetic</span>
+                <h3>Typography and restraint.</h3>
+                <p>
+                  Layout discipline, visual hierarchy, paper tones, serif display. The
+                  warm-notebook palette handles this for free on prose-heavy parts; computational
+                  sections must be designed to fit it.
+                </p>
+              </article>
+              <article class="pillar">
+                <span class="pillar-mark">Pillar 04 · Warm</span>
+                <h3>Calm and archive-worthy.</h3>
+                <p>
+                  Serious, inviting to reopen, no chrome-junk. The kind of doc you read in a
+                  comfortable chair, not the kind you tab through and close.
+                </p>
+              </article>
+            </div>
+
+            <div class="chart-wrap" aria-label="Pillar audit chart">
+              <div class="chart-header">
+                <div>
+                  <h3>This doc's pillar audit.</h3>
+                  <p>
+                    Computed from the doc you are reading right now. Bars are rendered live by
+                    <code>runtime.js</code> parsing the inline CSV next to this SVG — the chart
+                    you see is also a demonstration of the Computational pillar.
+                  </p>
+                </div>
+                <span class="pill">Live chart</span>
+              </div>
+              <svg class="chart-svg" data-chart="pillar-scores" aria-hidden="false"></svg>
+              <p class="chart-caption">
+                Source: this doc's <code>doc-source.json</code> pillar audit · scale 0–10 · 2026-05-14.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="pipeline" class="section">
+        <div class="section-grid">
+          <aside class="section-kicker">03 / The pipeline</aside>
+          <div>
+            <h2>From source to folder.</h2>
+            <div class="flow-wrap">
+              <div class="flow-header">
+                <p>
+                  Click each stage. The whole pipeline is one shot of agent reasoning. There is
+                  no build step, no compile pass. The agent is the renderer — and the behavior
+                  author.
+                </p>
+                <span class="pill">Interactive diagram</span>
+              </div>
+              <div class="flow" role="list" aria-label="/doc render pipeline">
+                <button class="flow-node active" type="button" data-step="read" role="listitem">
+                  <span>Step 1</span>
+                  <strong>Read</strong>
+                </button>
+                <button class="flow-node" type="button" data-step="design" role="listitem">
+                  <span>Step 2</span>
+                  <strong>Design</strong>
+                </button>
+                <button class="flow-node" type="button" data-step="compose" role="listitem">
+                  <span>Step 3</span>
+                  <strong>Compose</strong>
+                </button>
+                <button class="flow-node" type="button" data-step="emit" role="listitem">
+                  <span>Step 4</span>
+                  <strong>Emit</strong>
+                </button>
+                <button class="flow-node" type="button" data-step="audit" role="listitem">
+                  <span>Step 5</span>
+                  <strong>Audit</strong>
+                </button>
+              </div>
+              <div class="flow-detail" aria-live="polite">
+                <h3 id="flowTitle">Read source</h3>
+                <p id="flowText">
+                  Load the markdown file. The H1 is the doc title. Every ## becomes a top-level
+                  section. Every ### is usually a card or a list item. Scan for numeric data,
+                  jargon, references to other docs, structures that want exposing.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="files" class="section">
+        <div class="section-grid">
+          <aside class="section-kicker">04 / The four files</aside>
+          <div class="prose">
+            <h2>What lands in the folder.</h2>
+            <p>
+              Each rendered doc folder is exactly four files. Portable — copy it to a USB stick,
+              an email attachment, a different machine, and it still works.
+            </p>
+            <div class="doc-types">
+              <article class="doc-type">
+                <strong>index.html</strong>
+                <p>
+                  Semantic HTML body. Topbar, hero, sections, footer. Loads
+                  <code>style.css</code> and <code>runtime.js</code> from the same folder. Uses
+                  <code>contenteditable</code> on title, lede, thesis, and pullquote for
+                  in-browser typo fixes.
+                </p>
+                <span class="pill">Body</span>
+              </article>
+              <article class="doc-type">
+                <strong>style.css</strong>
+                <p>
+                  Warm-notebook stylesheet plus this render's per-doc extensions. Pinned at
+                  render time. Future kit updates do not touch it. That is archive permanence.
+                </p>
+                <span class="pill">Style</span>
+              </article>
+              <article class="doc-type">
+                <strong>runtime.js</strong>
+                <p>
+                  UI chrome plus behavioral primitives: <code>parseCsv</code>,
+                  <code>renderBarChart</code>, <code>clickToExplain</code>,
+                  <code>glossary</code>. Per-doc primitives appended at render time and pinned.
+                </p>
+                <span class="pill">Runtime</span>
+              </article>
+              <article class="doc-type">
+                <strong>doc-source.json</strong>
+                <p>
+                  Provenance manifest. Source path, source SHA-256, theme, components used,
+                  behaviors used, behaviors invented, pillar audit scores, folded sections,
+                  agent decisions, judgment notes.
+                </p>
+                <span class="pill">Manifest</span>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="visual" class="section">
+        <div class="section-grid">
+          <aside class="section-kicker">05 / Starter visual vocabulary</aside>
+          <div class="prose">
+            <h2>Cheap defaults for prose-heavy parts.</h2>
+            <p>
+              The warm-notebook stylesheet ships eleven pre-styled patterns. They handle the
+              <em>Aesthetic + Warm</em> pillars for prose-heavy sections cheaply. Use them only
+              when the section is genuinely prose-shaped; don't force a behavioral section into
+              one of these molds.
+            </p>
+            <ul class="clean">
+              <li><strong>Hero</strong> — title, lede, and a thesis card with metadata.</li>
+              <li><strong>Eyebrow</strong> — small mono label above section titles.</li>
+              <li><strong>Pullquote</strong> — one sentence that re-states the thesis. Sparingly.</li>
+              <li><strong>Note grid</strong> — 2-4 short comparison cards.</li>
+              <li><strong>Principles</strong> — numbered cards for named principles.</li>
+              <li><strong>Doc-types list</strong> — name + one-line summary + pill.</li>
+              <li><strong>Flow</strong> — 3-6 step interactive workflow diagram.</li>
+              <li><strong>Callout</strong> — clay tone for decisions, sage tone for non-goals.</li>
+              <li><strong>Decision list</strong> — Q/A with details/summary.</li>
+              <li><strong>Roadmap</strong> — 3-column phase grid (V0/V1/V2 style).</li>
+              <li><strong>Clean list</strong> — plain ul for flat bullets.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="behaviors" class="section">
+        <div class="section-grid">
+          <aside class="section-kicker">06 / Computational behaviors</aside>
+          <div class="prose">
+            <h2>The heart of the kit.</h2>
+            <p>
+              These are not pre-built templates. Each doc invents what it needs, drawing from
+              <code>runtime.js</code> primitives plus per-doc inline code plus per-doc CSS
+              extensions. <strong>Every render should include at least one.</strong> The starter
+              vocabulary handles aesthetics; this list handles the Interactive + Computational
+              pillars.
+            </p>
+            <ul class="clean">
+              <li>
+                <strong>Chart.</strong> Parse inline CSV/JSON, render bar/line/scatter as SVG.
+                Reach for it when the doc references numeric data — like the live audit chart
+                above.
+              </li>
+              <li>
+                <strong>Architecture diagram.</strong> Clickable SVG or HTML diagram; clicking
+                a node opens an explanation panel. Reach for it when the doc has system
+                structure to explain.
+              </li>
+              <li>
+                <strong>Decision walk.</strong> Branching tree; user clicks through choices.
+                Reach for it when the doc walks a "should I do X" thinking process.
+              </li>
+              <li>
+                <strong>Timeline.</strong> Dated events on a horizontal axis, click to expand.
+                Reach for it when chronology matters.
+              </li>
+              <li>
+                <strong>Comparison.</strong> Multi-axis side-by-side with swappable items.
+                Reach for it when comparing options or approaches.
+              </li>
+              <li>
+                <strong>Glossary.</strong> Underline defined terms; click reveals definition
+                popover. Try clicking any underlined term in this doc — that is the glossary
+                behavior running live.
+              </li>
+              <li>
+                <strong>Quiz.</strong> Recall prompts that reveal on click. Reach for it in
+                learning notes.
+              </li>
+              <li>
+                <strong>Drawer.</strong> Progressive disclosure for optional depth. Reach for
+                it for appendix-shaped content.
+              </li>
+              <li>
+                <strong>Runnable code.</strong> Inline JS that runs in the page where safe.
+                Reach for it when explaining an algorithm or showing live output.
+              </li>
+              <li>
+                <strong>Invent.</strong> Whatever the doc earns. <em>Default mode — every doc
+                adds at least one new behavior.</em>
+              </li>
+            </ul>
+            <article class="callout">
+              <strong>How invention works in V0</strong>
+              <p>
+                When a doc needs a primitive not yet in <code>runtime.js</code>, the agent adds
+                it during this render and pins the resulting <code>runtime.js</code> into the
+                folder. The primitive lives forever with the doc that needed it. After it
+                appears in 2+ docs, V1 graduates it into a shared <code>doc-kit/</code>.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="when" class="section">
+        <div class="section-grid">
+          <aside class="section-kicker">07 / When to use it</aside>
+          <div>
+            <h2>Reach for it when the doc will be re-read.</h2>
+            <div class="component-demo">
+              <article class="callout">
+                <strong>Reach for /doc for</strong>
+                <ul class="clean">
+                  <li>Vision docs — beliefs, goals, non-goals.</li>
+                  <li>HLDs — system overview, components, data flow.</li>
+                  <li>LLDs — APIs, schemas, edge cases, test plans.</li>
+                  <li>Learning notes — concept maps, mental models.</li>
+                  <li>Decision records — named decisions and reasoning.</li>
+                  <li>Anything with structure that markdown flattens.</li>
+                </ul>
+              </article>
+              <article class="callout" data-tone="sage">
+                <strong>Leave it markdown for</strong>
+                <ul class="clean">
+                  <li>A three-line note.</li>
+                  <li>A scratch TODO list.</li>
+                  <li>READMEs and contributing guides in a larger ecosystem.</li>
+                  <li>Anything you will only read once.</li>
+                </ul>
+              </article>
+            </div>
+            <div class="pullquote">
+              If you will re-open it, render it. If not, leave it markdown.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="scope" class="section">
+        <div class="section-grid">
+          <aside class="section-kicker">08 / V0 scope</aside>
+          <div class="prose">
+            <h2>What V0 deliberately does not do yet.</h2>
+            <p>
+              The current version is intentionally thin. Approach D — the full Living Doc Kit —
+              is what V0 grows into, not what it ships as.
+            </p>
+            <div class="decision-list">
+              <details open>
+                <summary>No shared doc-kit/ package</summary>
+                <p>
+                  Components and behaviors are inlined per doc in V0. V1 extracts a pattern
+                  into <code>doc-kit/</code> only after it recurs in 2+ docs. V1 picks the
+                  variant that actually worked, not the one that was planned.
+                </p>
+              </details>
+              <details>
+                <summary>No taste.json</summary>
+                <p>
+                  A learned model of your preferences across docs. V2. For now, taste lives in
+                  the SKILL.md prompt and your feedback per render.
+                </p>
+              </details>
+              <details>
+                <summary>No archive index (docs/index.html)</summary>
+                <p>
+                  A browseable map of every doc you have rendered. V1. Today the archive is
+                  just folders on disk under <code>docs/</code>.
+                </p>
+              </details>
+              <details>
+                <summary>No cross-doc memory</summary>
+                <p>
+                  Doc N referencing decisions made in docs 1..N-1. V2. Cross-doc visual cohesion
+                  in V0 comes from the shared warm-notebook theme and the stable brand mark.
+                </p>
+              </details>
+              <details>
+                <summary>No /doc revise &lt;slug&gt;</summary>
+                <p>
+                  Re-render an existing doc from its source while keeping the slug stable. V1.
+                  In V0 you re-run <code>/doc render</code> and overwrite the folder — which is
+                  exactly how this doc got course-corrected.
+                </p>
+              </details>
+              <details>
+                <summary>No two-way revise</summary>
+                <p>
+                  Edit the HTML and have changes flow back to the markdown source. V2 research
+                  stretch. The one-way contract — markdown is the seed, HTML is the artifact —
+                  is sufficient through V1.
+                </p>
+              </details>
+            </div>
+            <article class="callout system-note">
+              <strong>What V0 originally got wrong</strong>
+              <p>
+                The first draft narrowed the kit into a fixed menu of 11 visual templates,
+                framed as "pick one per ## section." That reversed premise 3 ("computational
+                behaviors, not doc types") and the original premise 4 ("Warm AND computational").
+                The course-correction made computational behaviors first-class, made "invent"
+                the default mode, and refined premise 4 into four co-equal pillars. This
+                rendered doc is the dogfood proof.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="system" class="section">
+        <div class="section-grid">
+          <aside class="section-kicker">09 / Where this fits</aside>
+          <div>
+            <h2>Three layers. One exists today.</h2>
+            <div class="roadmap">
+              <article class="roadmap-phase">
+                <h3>Layer 1 — Renderer Agent</h3>
+                <p><span class="pill">Shipped</span></p>
+                <ul class="clean">
+                  <li>The /doc skill at <code>~/.claude/skills/doc/SKILL.md</code>.</li>
+                  <li>Reads markdown intent, designs what the doc needs, writes 4-file folders.</li>
+                  <li>Components and behaviors inlined per doc; warm-notebook theme baseline.</li>
+                </ul>
+              </article>
+              <article class="roadmap-phase">
+                <h3>Layer 2 — Doc Kit</h3>
+                <p><span class="pill">V1</span></p>
+                <ul class="clean">
+                  <li>Shared <code>doc-kit/components/</code> with versioned patterns.</li>
+                  <li>Themes folder (warm-notebook, plus earned alternates).</li>
+                  <li>Prompts per component, refined as docs accumulate.</li>
+                </ul>
+              </article>
+              <article class="roadmap-phase">
+                <h3>Layer 3 — Doc Archive</h3>
+                <p><span class="pill">V1+</span></p>
+                <ul class="clean">
+                  <li>Browseable map: <code>docs/index.html</code>.</li>
+                  <li>Machine-readable manifest: <code>docs/index.json</code>.</li>
+                  <li>Cross-doc memory loaded per render (V2).</li>
+                </ul>
+              </article>
+            </div>
+            <article class="callout system-note" data-tone="sage">
+              <strong>The agent owns all three layers</strong>
+              <p>
+                You stay in the writing lane forever. The kit, the archive, and the renderer
+                are all agent-maintained.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="try" class="section">
+        <div class="section-grid">
+          <aside class="section-kicker">10 / Try it</aside>
+          <div class="prose">
+            <h2>Try it on your next doc.</h2>
+            <p>
+              Three ways to invoke. Pick whichever feels natural — the agent figures out the rest.
+            </p>
+            <ul class="clean">
+              <li><strong>Simple.</strong> <code>Render path/to/idea.md through /doc.</code></li>
+              <li><strong>With a doc-type hint.</strong> <code>/doc render path/to/idea.md as HLD.</code></li>
+              <li><strong>Conversational.</strong> <code>Turn this markdown into an HTML doc.</code></li>
+            </ul>
+            <article class="callout">
+              <strong>Where the output lands</strong>
+              <p>
+                <code>&lt;source-dir&gt;/docs/&lt;YYYY-MM-DD&gt;-&lt;slug&gt;/</code>. The agent
+                prints the exact <code>open</code> command when the render is done — and
+                self-audits the four pillars before declaring done.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="shell">
+        HTML Doc Kit · How /doc works · re-rendered through /doc · 2026-05-14 · warm-notebook
+        theme · all four pillars hit. Open <code>index.html</code> in any browser.
+      </div>
+    </footer>
+
+    <script type="application/json" id="flow-details">
+      {
+        "read": {
+          "title": "Read source",
+          "text": "Load the markdown file. The H1 is the doc title. Every ## becomes a top-level section. Every ### is usually a card or a list item. Scan for numeric data, jargon, references to other docs, structures that want exposing."
+        },
+        "design": {
+          "title": "Design what the doc needs",
+          "text": "Which behaviors? Which diagrams? Which computations? What would make this doc 10/10 for the reader who reopens it in 2027? This is the most important step — and the easiest to skip."
+        },
+        "compose": {
+          "title": "Compose",
+          "text": "Pick from the starter visual vocabulary for prose-heavy parts. Compose computational behaviors for everything else. Invent at least one new primitive per doc."
+        },
+        "emit": {
+          "title": "Emit four files",
+          "text": "Write index.html, style.css (warm-notebook + per-doc extensions, pinned), runtime.js (chrome + behavioral primitives, pinned), and doc-source.json (provenance manifest with pillar audit)."
+        },
+        "audit": {
+          "title": "Self-audit and hand back",
+          "text": "Score each pillar 0-10. If any pillar is below 6, fix it before declaring done. Then print the open command and stop."
+        }
+      }
+    </script>
+
+    <script type="application/json" id="pillar-scores">
+      {
+        "csv": "pillar,score\nInteractive,8\nComputational,6\nAesthetic,9\nWarm,9",
+        "labelKey": "pillar",
+        "valueKey": "score",
+        "max": 10,
+        "suffix": " / 10",
+        "ariaLabel": "Pillar audit scores for this doc",
+        "palette": ["#9f4f32", "#bd8128", "#647257", "#314f65"]
+      }
+    </script>
+
+    <script type="application/json" id="glossary">
+      {
+        "premise 4": "Now Interactive, Computational, Aesthetic, and Warm — all four together, no subset between any pair. Updated 2026-05-14 from the earlier 'Warm AND computational' framing.",
+        "premise 3": "Computational behaviors, not doc types. A doc is a composition of behaviors (chart, click-to-explain, decision walk, timeline, glossary, quiz, drawer) picked per render, not a fixed template.",
+        "Approach D": "The chosen design: a three-layer Living Doc Kit where the agent owns the renderer, the kit, and the archive. Self-bootstrapping, self-evolving, agent-native at every layer.",
+        "warm-notebook": "The default visual theme: paper-toned palette with Fraunces (display), Source Serif 4 (body), and IBM Plex Mono (labels and code). Pinned in style.css at render time.",
+        "Layer 1": "The renderer agent — this skill. Reads markdown intent, designs what the doc needs, writes the 4-file folder. The only layer that exists in V0.",
+        "Layer 2": "The Doc Kit: shared components, themes, prompts the agent maintains. V1, built after observing what V0 actually reuses across docs.",
+        "Layer 3": "The Doc Archive: browseable, searchable, cross-linked map of every rendered doc. V1+. Folders are already on disk today; the index is V1.",
+        "archive permanence": "Each rendered doc carries a frozen copy of its CSS and JS. Future kit updates do not propagate to existing docs. Forward-only. Your 2026 doc reads the same in 2030.",
+        "doc-source.json": "The provenance manifest stored in every doc folder. Tracks source SHA-256, components and behaviors used, behaviors invented, pillar audit scores, folded sections, and agent decisions worth remembering on revise.",
+        "runtime.js": "Per-doc JavaScript: UI chrome (progress bar, focus toggle, print, scroll-spy, flow nodes, contenteditable) plus behavioral primitives (parseCsv, renderBarChart, clickToExplain, glossary). Extended and pinned per render.",
+        "V0": "The current version: thin renderer, per-doc inlined components and behaviors, single warm-notebook theme. Two docs rendered so far. V1 graduation needs 3+ docs AND a recurring behavior."
+      }
+    </script>
+
+    <script src="runtime.js"></script>
+  </body>
+</html>

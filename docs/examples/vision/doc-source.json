@@ -1,0 +1,57 @@
+{
+  "version": "v0",
+  "rendered_at": "2026-05-14T11:36:04Z",
+  "renderer": "doc-skill@v0",
+  "source": {
+    "type": "markdown",
+    "path": "/Users/meetvyas/Desktop/Ideas/HTML_Docs/vision.md",
+    "sha256": "96430c8165f9a2b21915eb917e11c6778ea6d022843bc8d5370295ec163ff726"
+  },
+  "output_dir": "/Users/meetvyas/Desktop/Ideas/HTML_Docs/docs/2026-05-14-vision",
+  "slug": "2026-05-14-vision",
+  "title": "HTML Doc Kit — Vision",
+  "theme": "warm-notebook@v0",
+  "doc_type_hint": "vision",
+  "components_used": [
+    "hero",
+    "eyebrow",
+    "pullquote",
+    "note-grid",
+    "principles",
+    "doc-types",
+    "flow",
+    "clean-list",
+    "callout",
+    "decision-list",
+    "roadmap"
+  ],
+  "runtime": "runtime.js",
+  "stylesheet": "style.css",
+  "agent_decisions": {
+    "section_order": [
+      "why",
+      "principles",
+      "kit",
+      "workflow",
+      "components",
+      "decisions",
+      "non-goals",
+      "roadmap",
+      "success",
+      "open-questions"
+    ],
+    "folded_sections": [
+      { "from": "Working Thesis", "into": "hero card (thesis + lede)" },
+      { "from": "The Bet", "into": "why (note-grid)" },
+      { "from": "What Makes This Better Than Markdown Export", "into": "components (closing clay callout)" }
+    ],
+    "pullquotes": [
+      "The goal is not prettier notes. The goal is notes that pull you back into the thinking."
+    ],
+    "doc_types_sections_treatment": "Sections list rendered inline within each .doc-type description (interpunct-separated), rather than as a separate sub-component. Preserves source content without restructuring the existing .doc-type grid.",
+    "non_goals_treatment": "Five bullets folded into a single sage-toned callout with a clean ul, rather than five separate callouts.",
+    "open_questions_treatment": "Source markdown has questions without answers. Rendered as details/summary with short agent-supplied answers drawn from the working thesis and design doc, so a future-me reopening this artifact gets a starting point. First details is open by default.",
+    "title_treatment": "Hero H1 set to 'HTML Doc Kit — Vision.' (em dash, trailing period) for typographic warmth. Source H1 was 'HTML Doc Kit - Vision' (hyphen).",
+    "notes": "First doc rendered through /doc. Style anchor: ../../vision.html (hand-built). The hand-built artifact omits 7 of 13 ## sections; this render preserves all 13 via folds. Diff candidates worth resolving in V1: (1) should /doc auto-link the hero card meta values from the source's frontmatter rather than hand-pick them, (2) the .doc-type grid should grow a sections-list slot if doc-type-heavy docs become common, (3) Open Questions deserves a dedicated component when answers stay short."
+  }
+}

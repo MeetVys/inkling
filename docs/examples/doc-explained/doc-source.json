@@ -1,0 +1,122 @@
+{
+  "version": "v0",
+  "rendered_at": "2026-05-14T12:19:55Z",
+  "renderer": "doc-skill@v0",
+  "source": {
+    "type": "markdown",
+    "path": "/Users/meetvyas/Desktop/Ideas/HTML_Docs/doc-explained.md",
+    "sha256": "261f81bdfb8838265a7793cf3cbe4a17885d5d666b65a3c6ec219c95bd3ea376"
+  },
+  "output_dir": "/Users/meetvyas/Desktop/Ideas/HTML_Docs/docs/2026-05-14-doc-explained",
+  "slug": "2026-05-14-doc-explained",
+  "title": "/doc — Explained",
+  "theme": "warm-notebook@v0",
+  "doc_type_hint": "learning",
+  "components_used": [
+    "hero",
+    "eyebrow",
+    "pullquote",
+    "note-grid",
+    "doc-types",
+    "flow",
+    "clean-list",
+    "callout",
+    "decision-list",
+    "roadmap"
+  ],
+  "behaviors_used": [
+    "chart",
+    "glossary",
+    "click-to-explain"
+  ],
+  "behaviors_invented": [
+    {
+      "name": "parseCsv",
+      "shape": "function(text) → row objects",
+      "purpose": "Minimal CSV parser used by renderBarChart auto-wiring.",
+      "appended_to": "runtime.js"
+    },
+    {
+      "name": "renderBarChart",
+      "shape": "function(svgEl, data, opts)",
+      "purpose": "Inline SVG horizontal bar chart. Reads CSV/JSON from a script tag and renders into a [data-chart] SVG placeholder. Paper-warmed palette by default.",
+      "appended_to": "runtime.js"
+    },
+    {
+      "name": "clickToExplain",
+      "shape": "function(rootEl, panelTitleEl, panelTextEl, dataMap)",
+      "purpose": "Generic click-to-reveal harness for diagrams. Generalizes the flow-node pattern so future docs (arch diagrams, decision walks) can share the wiring.",
+      "appended_to": "runtime.js"
+    },
+    {
+      "name": "glossary",
+      "shape": "function(scopeEl, terms)",
+      "purpose": "Walks text nodes in scope, wraps each defined term in a focusable span, attaches click-to-reveal popover. Auto-wired from <script id=\"glossary\"> JSON tag.",
+      "appended_to": "runtime.js"
+    }
+  ],
+  "components_extended": [
+    {
+      "name": "system-note",
+      "shape": "single-class utility for callouts that follow a roadmap or decision-list",
+      "purpose": "Adds 28px top margin so a closing callout doesn't crowd the section above. Carried over from the first render.",
+      "appended_to": "style.css"
+    },
+    {
+      "name": "pillars + pillar",
+      "shape": "2x2 grid of card variants",
+      "purpose": "Visual home for the four pillars. Mirrors .principles structure but tuned to four co-equal cards.",
+      "appended_to": "style.css"
+    },
+    {
+      "name": "chart-wrap + chart-header + chart-svg + chart-caption",
+      "shape": "boxed chart container with header, SVG, and small caption",
+      "purpose": "Frame for any inline chart rendered by runtime.js.",
+      "appended_to": "style.css"
+    },
+    {
+      "name": "term + term-tooltip",
+      "shape": "inline span with dashed underline + absolute-positioned popover",
+      "purpose": "Glossary term highlight and click-to-reveal definition popover.",
+      "appended_to": "style.css"
+    }
+  ],
+  "runtime": "runtime.js",
+  "stylesheet": "style.css",
+  "pillar_audit": {
+    "interactive": "8 — scroll-spy nav, focus mode, print, flow click-to-explain, decision-list details, contenteditable hero/lede/thesis/pullquote, glossary popovers. Eight live affordances.",
+    "computational": "6 — runtime.js parses inline CSV and renders a live SVG bar chart of pillar scores; glossary walks the DOM and wires popovers dynamically. Not yet: decision walks, timelines, runnable code.",
+    "aesthetic": "9 — warm-notebook palette intact, typography hierarchy clean, chart and glossary additions stay inside the theme's color and type system.",
+    "warm": "9 — paper tones, serif display, gentle interaction, no chrome-junk. Inviting to reopen."
+  },
+  "agent_decisions": {
+    "section_order": [
+      "what",
+      "pillars",
+      "pipeline",
+      "files",
+      "visual",
+      "behaviors",
+      "when",
+      "scope",
+      "system",
+      "try"
+    ],
+    "folded_sections": [
+      { "from": "Working Thesis", "into": "hero card (thesis + lede)" }
+    ],
+    "pullquotes": [
+      "If you will re-open it, render it. If not, leave it markdown."
+    ],
+    "component_repurposes": [
+      {
+        "component": "roadmap",
+        "repurposed_for": "Three-layer system diagram (Layer 1 / Layer 2 / Layer 3) instead of V0/V1/V2 phases.",
+        "v1_question": "Should 'layer-grid' become its own component or stay as a roadmap variant? Watch for a third doc that wants the same pattern before extracting."
+      }
+    ],
+    "this_render_history": "Second render of the doc-explained source. The first render (2026-05-14T11:44:28Z) used only the starter visual vocabulary — Interactive 4, Computational 1. User caught the narrowing: 'this section seems to be narrowing the possibilities of how the doc can be structured.' Course correction: refined premise 4 from 'Warm AND computational, no tradeoff' to 'Interactive, Computational, Aesthetic, and Warm' (four co-equal pillars). Rewrote SKILL.md to make computational behaviors first-class and 'invent' the default. Re-rendered this doc with parseCsv, renderBarChart, clickToExplain, and glossary primitives baked into runtime.js.",
+    "v1_extraction_candidates": "After two docs, three reuse signals: (a) the flow component appears in both docs and is the visual workhorse; (b) the callout component (clay + sage) appears in both; (c) the clickToExplain harness — newly invented here — generalizes the flow-node pattern and is the strongest V1 behavior candidate. Recommend extracting flow + clickToExplain together when a third doc lands.",
+    "notes": "All four pillars hit. Self-audit recorded above. Brand mark held at 'HD' for cross-doc visual cohesion. Glossary scope-skips topbar, nav, headings, code, and meta blocks to avoid noisy highlighting."
+  }
+}

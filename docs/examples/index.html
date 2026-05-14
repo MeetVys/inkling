@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Example docs rendered by inkling — see the conversational HTML doc builder in action." />
+    <title>inkling — examples</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,450..750,60&family=Source+Serif+4:opsz,wght@8..60,400..700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --paper: #f8f0dd;
+        --paper-deep: #efe0bc;
+        --paper-soft: #fbf6e8;
+        --ink: #30261c;
+        --ink-muted: #6f614f;
+        --ink-faint: #9b8d77;
+        --line: #d9c79f;
+        --line-strong: #b8975f;
+        --clay: #9f4f32;
+        --clay-dark: #733521;
+        --sage: #647257;
+        --ochre: #bd8128;
+        --shadow: 0 24px 60px rgba(87, 60, 26, 0.16);
+        --serif-display: "Fraunces", "Source Serif 4", Georgia, serif;
+        --serif-body: "Source Serif 4", Georgia, serif;
+        --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at 12% 10%, rgba(189, 129, 40, 0.16), transparent 34rem),
+          radial-gradient(circle at 82% 0%, rgba(100, 114, 87, 0.18), transparent 28rem),
+          linear-gradient(180deg, var(--paper-soft), var(--paper));
+        color: var(--ink);
+        font-family: var(--serif-body);
+        font-size: 18px;
+        line-height: 1.65;
+        min-height: 100vh;
+      }
+      .shell { max-width: 980px; margin: 0 auto; padding: 64px 32px 80px; }
+      .eyebrow {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--clay);
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+      }
+      h1 {
+        font-family: var(--serif-display);
+        font-weight: 600;
+        font-size: clamp(36px, 4.6vw, 56px);
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+        margin: 0 0 18px;
+      }
+      .lede {
+        font-size: 20px;
+        color: var(--ink-muted);
+        max-width: 56ch;
+        margin: 0 0 48px;
+      }
+      .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+      @media (max-width: 720px) { .gallery { grid-template-columns: 1fr; } }
+      .card {
+        background: var(--paper-soft);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        padding: 28px;
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        color: inherit;
+        transition: transform 160ms ease, border-color 160ms ease;
+      }
+      .card:hover { transform: translateY(-3px); border-color: var(--clay); }
+      .card .kind {
+        font-family: var(--mono); font-size: 11px;
+        color: var(--sage); letter-spacing: 0.14em; text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+      .card h2 {
+        font-family: var(--serif-display); font-weight: 600;
+        font-size: 26px; margin: 0 0 12px; letter-spacing: -0.01em;
+      }
+      .card p { margin: 0 0 16px; color: var(--ink); }
+      .card .meta {
+        font-family: var(--mono); font-size: 12px; color: var(--ink-faint);
+        display: flex; gap: 14px; flex-wrap: wrap;
+      }
+      .card .meta span { display: inline-flex; align-items: center; gap: 4px; }
+      .back {
+        font-family: var(--mono); font-size: 13px;
+        color: var(--clay-dark); text-decoration: none;
+        margin-top: 48px; display: inline-block;
+        border-bottom: 1px dashed var(--line-strong);
+        padding-bottom: 2px;
+      }
+      .back:hover { color: var(--clay); }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <div class="eyebrow">Examples · gallery</div>
+      <h1>Three docs the agent rendered</h1>
+      <p class="lede">
+        Each link below opens a real `inkling` artifact in your browser. Read the
+        <code>doc-source.json</code> in each folder to see the event log that produced it.
+      </p>
+
+      <div class="gallery">
+        <a class="card" href="../">
+          <div class="kind">Tutorial · landing</div>
+          <h2>A friendly tutorial</h2>
+          <p>
+            The interactive walkthrough of the primary user flow. Built with a
+            <strong>conversation-spine chassis</strong> — the doc body is laid out
+            as a simulated chat, because the tutorial about a conversational tool
+            is itself a conversation.
+          </p>
+          <div class="meta">
+            <span>Originality 9/10</span>
+            <span>Invented: 6 structures · 4 behaviors</span>
+          </div>
+        </a>
+
+        <a class="card" href="vision/">
+          <div class="kind">Example · vision</div>
+          <h2>Vision doc</h2>
+          <p>
+            A project's vision rendered as an inkling artifact. Uses the starter
+            visual vocabulary heavily. Kept here as a clear reference for the
+            warm-notebook tokens — and as honest evidence of the templater-drift
+            failure mode the v0.2 contract now prevents.
+          </p>
+          <div class="meta">
+            <span>Originality 4/10</span>
+            <span>Pre-contract render</span>
+          </div>
+        </a>
+
+        <a class="card" href="doc-explained/">
+          <div class="kind">Example · learning</div>
+          <h2>The /doc skill explained</h2>
+          <p>
+            A learning doc with inline charts, glossary popovers, and click-to-explain
+            wiring. Demonstrates behavioral invention at the runtime layer —
+            <code>parseCsv</code>, <code>renderBarChart</code>,
+            <code>clickToExplain</code>, <code>glossary</code> all written fresh.
+          </p>
+          <div class="meta">
+            <span>Originality 6/10</span>
+            <span>Behavior-invention strong</span>
+          </div>
+        </a>
+      </div>
+
+      <a class="back" href="../">← Back to the tutorial</a>
+    </main>
+  </body>
+</html>

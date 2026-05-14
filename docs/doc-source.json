@@ -1,0 +1,96 @@
+{
+  "version": "v0.2",
+  "renderer": "doc-skill@v0.2",
+  "slug": "2026-05-14-doc-tutorial",
+  "title": "HTML Doc Kit — A Friendly Tutorial",
+  "created_at": "2026-05-14T18:00:00Z",
+  "last_event_at": "2026-05-14T18:00:00Z",
+  "output_dir": "/Users/meetvyas/Desktop/Ideas/HTML_Docs/docs/2026-05-14-doc-tutorial",
+  "theme": "warm-notebook@v0",
+  "doc_type_hint": "learning",
+  "chassis": "conversation-spine",
+  "seed": { "type": "none", "path": null, "sha256": null },
+
+  "events": [
+    {
+      "n": 1,
+      "ts": "2026-05-14T18:00:00Z",
+      "verb": "new",
+      "instruction": "I have a friend, I want to share with the primary flow of how to work with this tool/skill. Create an html doc that acts as a tutorial for it. Use diagrams, flow charts to explain. And be interactive.",
+      "origin": "user",
+      "files_touched": ["index.html", "style.css", "runtime.js", "doc-source.json"],
+      "assets_added": [],
+      "assets_removed": [],
+      "structures_used": [],
+      "structures_invented": [
+        {
+          "name": "conversation-spine chassis",
+          "shape": "Doc body is laid out as a simulated conversation; user-friend messages on left, agent responses on right with files-touched chips. The form mirrors the function — the tutorial about a conversational tool IS a conversation.",
+          "purpose": "Teach the primary user flow by showing it, not describing it. The reader experiences the tool by reading a session."
+        },
+        {
+          "name": "files-touched chips",
+          "shape": "Small mono-styled pill tags inside agent turns: ~ file (modified), + file (added). Two color variants for added vs modified.",
+          "purpose": "Show exactly which files the agent edited per turn — makes the 'agent edits the whole package' contract visible at a glance."
+        },
+        {
+          "name": "interactive folder anatomy",
+          "shape": "320px tree on the left, detail panel on the right. Click any file node to swap the detail panel content: file path, role chip, body prose, bullet list.",
+          "purpose": "Make the doc folder's structure tangible. Reader clicks each file and learns what it does in context, not in a wall of prose."
+        },
+        {
+          "name": "compare tabs (md vs doc)",
+          "shape": "Two-tab toggle. Markdown tab shows the same content as raw .md; Doc Kit tab shows it rendered with a reactive funnel chart and inline percentages.",
+          "purpose": "Make the 'why not markdown' question concrete with a side-by-side, not an abstract argument."
+        },
+        {
+          "name": "try-it 4-card grid",
+          "shape": "Two-column grid of four prompt cards. Each card has a step number, a title, a one-line prose, and the exact natural-language prompt to paste into Claude Code.",
+          "purpose": "Lower the activation energy. Reader copies prompt #1 into Claude Code and is off."
+        },
+        {
+          "name": "meta event-log footer",
+          "shape": "Footer section that fetches and displays the doc's own doc-source.json events. Becomes a live mirror as the doc evolves.",
+          "purpose": "Close the loop — the doc that teaches the tool shows how it was itself built. Most direct proof the tool works."
+        }
+      ],
+      "behaviors_used": [],
+      "behaviors_invented": [
+        {
+          "name": "flowStepper",
+          "purpose": "Renders an interactive 5-step pipeline from a JSON tag. Each step is a clickable button; activating one swaps an explanation panel and a code-example panel below.",
+          "appended_to": "runtime.js"
+        },
+        {
+          "name": "folderAnatomy",
+          "purpose": "Wires the folder-tree buttons to swap the detail panel from a JSON tag of file descriptors. Click-to-reveal pattern with aria-pressed state.",
+          "appended_to": "runtime.js"
+        },
+        {
+          "name": "toggleCompare",
+          "purpose": "Two-tab before/after toggle. Manages aria-pressed on tabs and data-active on panels.",
+          "appended_to": "runtime.js"
+        },
+        {
+          "name": "eventLogReveal",
+          "purpose": "Fetches the doc's own doc-source.json at runtime and pretty-prints the events[] into a <pre>. The doc reads itself. Falls back gracefully when opened via file:// (CORS).",
+          "appended_to": "runtime.js"
+        }
+      ],
+      "event_audit": {
+        "originality": "9/10 — chassis itself is invented (conversation-spine), 6 new structural shapes, 4 new behavioral primitives. None of the starter visual vocabulary was reached for as a primary frame."
+      },
+      "summary": "Created a tutorial doc using a conversation-spine chassis — the page itself dramatises the primary flow it teaches. Invented six structures (chassis, file-chips, anatomy tree, compare tabs, try-it grid, meta event-log footer) and four behaviors (flowStepper, folderAnatomy, toggleCompare, eventLogReveal). The eventLogReveal makes the doc read its own manifest — the tool teaches itself."
+    }
+  ],
+
+  "doc_audit": {
+    "interactive": "9/10 — flow stepper, folder anatomy, compare tabs, focus toggle, print, scroll progress, contenteditable hero. Reader has at least 15 distinct interactions available.",
+    "computational": "7/10 — eventLogReveal fetches and parses the manifest; the compare panel computes funnel percentages in real markup. No reactive CSV binding in this doc itself (the *demo* shows it; the tutorial is about the system).",
+    "aesthetic": "8/10 — warm-notebook tokens carried; chassis-fresh layout; typographic hierarchy holds across hero, sections, and conversation; clay and sage accents used purposefully.",
+    "warm": "9/10 — paper tones, Fraunces display, Source Serif body, gentle interactions, generous spacing. Reads like a notebook page, not a SaaS landing.",
+    "originality": "9/10 — primary chassis is invented; five other structural shapes invented; four behavioral primitives invented. Zero starter-vocabulary components reached for as the doc's frame."
+  },
+
+  "notes": "First doc rendered under the v0.2 conversational schema. Validates the contract end to end: event log structure, structures_invented + behaviors_invented populated, doc_audit recomputed, chassis decided lazily (here: on the new turn itself because the user's instruction was rich enough to design from). Two existing v0 docs (2026-05-14-vision, 2026-05-14-doc-explained) are pending manifest migration; should be done on next op against them."
+}
