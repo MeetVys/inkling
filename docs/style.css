@@ -452,7 +452,7 @@ code {
   border-radius: var(--radius-md);
   padding: 20px 24px;
 }
-.compare .doc-panel { display: flex; flex-direction: column; gap: 18px; }
+.compare .doc-panel[data-active="true"] { display: flex; flex-direction: column; gap: 18px; }
 .compare .doc-panel .demo-title {
   font-family: var(--serif-display); font-weight: 600;
   font-size: 24px; color: var(--ink);
