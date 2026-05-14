@@ -22,7 +22,7 @@ These are the load-bearing rules. Break them and the project loses its character
 
 The user opens Claude Code and types plain English: *"create an HTML doc for X"*, *"add a chart from this CSV"*, *"remove that callout"*. The agent recognizes the intent and silently routes to the right internal mechanism.
 
-The user never has to type slash commands as a normal workflow. The internal verbs (`new`, `add`, `edit`, `remove`, `show`, `render`, `replay`, `freeze`) are this skill's *internal mechanics*, not the user's syntax. Explicit `/doc <verb>` invocations remain available as a power-user escape hatch, but they are never demanded.
+The user never has to type slash commands as a normal workflow. The internal verbs (`new`, `add`, `edit`, `remove`, `show`, `render`, `replay`, `freeze`) are this skill's *internal mechanics*, not the user's syntax. Explicit `/inkling <verb>` invocations remain available as a power-user escape hatch, but they are never demanded.
 
 ### 2. The doc folder is the source of truth
 

@@ -1,5 +1,5 @@
 ---
-name: doc
+name: inkling
 description: |
   Conversational HTML doc builder. The user's primary interface is natural
   language — they never have to type slash commands. This skill auto-invokes
@@ -14,7 +14,7 @@ description: |
   the default.
 
   ALWAYS auto-invoke this skill when the user expresses any of these
-  intents, with or without an explicit /doc:
+  intents, with or without an explicit /inkling:
     - "create an HTML doc for X" / "make me a doc about X" / "I want to
       write a doc for X" / "start a new doc" / "let's build a vision doc"
     - "add a chart from this CSV" / "chart this data" / "throw in a
@@ -25,7 +25,7 @@ description: |
     - "open the doc" / "show me what it looks like" / "let me see"
     - "flatten this for sharing" / "single file please" / "make it portable"
     - "rebuild from the log" / "replay the events"
-    - Or any direct invocation: "/doc", "/doc new", "/doc add", etc.
+    - Or any direct invocation: "/inkling", "/inkling new", "/inkling add", etc.
 
   Proactively invoke when the user is mid-thought building a document piece
   by piece, especially if they mention HLDs, LLDs, vision docs, design
@@ -37,7 +37,7 @@ allowed-tools:
   - Bash
 ---
 
-# /doc — render natural-language intent into an interactive HTML doc folder
+# /inkling — render natural-language intent into an interactive HTML doc folder
 
 This is the renderer-agent skill from [`inkling`](https://github.com/MeetVys/inkling).
 Design philosophy: see `DESIGN.md` in the inkling repo for the full set of
@@ -89,14 +89,14 @@ draft prose already exists, but it is not the canonical entry path.
 
 | verb | shape | what it does |
 | --- | --- | --- |
-| `/doc new "<title>"` | start a doc | Creates an empty doc folder with a minimal scaffold (skeleton `index.html`, baseline `style.css` tokens, baseline `runtime.js` chrome only, manifest with empty `events`). Chassis is **not** decided yet; it gets designed on the first real content add. |
-| `/doc add "<instruction>"` | append content | Freeform instruction. Examples: *"section about Q1 perf"*, *"this CSV → bar chart"*, *"footer with my name and the date"*, *"insert this image after the chart"*. Agent interprets, edits whichever files need editing, records an event. |
-| `/doc edit "<instruction>"` | modify existing content | *"Make the chart show a line not bars"*, *"rephrase the intro"*, *"move the footer above the chart"*. |
-| `/doc remove "<target>"` | drop content | *"Remove the third callout"*, *"remove the footer"*. |
-| `/doc show` | open in browser | `open <current-doc>/index.html`. |
-| `/doc render <source.md>` | seed from markdown | Convenience. Renders an existing markdown file as the starting state of a new conversational doc; subsequent edits continue from there. |
-| `/doc replay [<slug>]` | rebuild from event log | Deterministically reconstructs the folder from `events[]`. Used after manual edits or to verify the log is lossless. |
-| `/doc freeze [<slug>]` | flatten for sharing | Produces a single self-contained `.html` from the doc folder. Original untouched. |
+| `/inkling new "<title>"` | start a doc | Creates an empty doc folder with a minimal scaffold (skeleton `index.html`, baseline `style.css` tokens, baseline `runtime.js` chrome only, manifest with empty `events`). Chassis is **not** decided yet; it gets designed on the first real content add. |
+| `/inkling add "<instruction>"` | append content | Freeform instruction. Examples: *"section about Q1 perf"*, *"this CSV → bar chart"*, *"footer with my name and the date"*, *"insert this image after the chart"*. Agent interprets, edits whichever files need editing, records an event. |
+| `/inkling edit "<instruction>"` | modify existing content | *"Make the chart show a line not bars"*, *"rephrase the intro"*, *"move the footer above the chart"*. |
+| `/inkling remove "<target>"` | drop content | *"Remove the third callout"*, *"remove the footer"*. |
+| `/inkling show` | open in browser | `open <current-doc>/index.html`. |
+| `/inkling render <source.md>` | seed from markdown | Convenience. Renders an existing markdown file as the starting state of a new conversational doc; subsequent edits continue from there. |
+| `/inkling replay [<slug>]` | rebuild from event log | Deterministically reconstructs the folder from `events[]`. Used after manual edits or to verify the log is lossless. |
+| `/inkling freeze [<slug>]` | flatten for sharing | Produces a single self-contained `.html` from the doc folder. Original untouched. |
 
 ### Current-doc state
 
@@ -135,8 +135,8 @@ demand the user type the verb.
 | "open the doc", "show me what it looks like", "let me see", "open it" | `show` | `open <current-doc>/index.html`. |
 | "rebuild from the log", "replay the events", "verify the log is correct" | `replay` | Diagnostic / integrity check. |
 | "flatten this for sharing", "make it a single file", "freeze it", "make it portable" | `freeze` | Produces the single-file output. |
-| "render this markdown as a doc", "turn this .md into a doc", `/doc render foo.md` | `render` (seed) | Convenience entry from existing markdown. |
-| Explicit `/doc <verb> ...` | Whatever verb they typed | Always honored. Power-user escape hatch. |
+| "render this markdown as a doc", "turn this .md into a doc", `/inkling render foo.md` | `render` (seed) | Convenience entry from existing markdown. |
+| Explicit `/inkling <verb> ...` | Whatever verb they typed | Always honored. Power-user escape hatch. |
 
 ### Implicit current-doc context
 
@@ -175,7 +175,7 @@ target), not when the verb is obvious.
 
 ## Per-verb procedure
 
-### `/doc new "<title>"`
+### `/inkling new "<title>"`
 
 1. Compute slug: `YYYY-MM-DD-<title-as-kebab>`. The date is *today*.
 2. Compute output dir: `<project-root>/docs/<slug>/`. Create with `mkdir -p`.
@@ -194,7 +194,7 @@ target), not when the verb is obvious.
 8. Tell the user the doc was created and what verbs come next. Do NOT
    declare the doc done — it has no content.
 
-### `/doc add "<instruction>"`
+### `/inkling add "<instruction>"`
 
 1. Load current doc (or `--to` target). Read `index.html`, `style.css`,
    `runtime.js`, `doc-source.json`.
@@ -217,37 +217,37 @@ target), not when the verb is obvious.
 5. Append an event to `doc-source.json` (see [Event log schema](#event-log-schema)).
 6. Re-run the doc-level pillar audit (against the full doc as it now exists)
    and update `pillar_audit` in the manifest.
-7. Tell the user what changed in plain English. Offer `/doc show` if not
+7. Tell the user what changed in plain English. Offer `/inkling show` if not
    already open.
 
-### `/doc edit "<instruction>"`
+### `/inkling edit "<instruction>"`
 
 Same as `add` but mutates an existing section/element rather than appending.
 Identify the target by re-reading `index.html`; if ambiguous, ask which one.
 Record as an `edit` event.
 
-### `/doc remove "<target>"`
+### `/inkling remove "<target>"`
 
 Identify the target (re-read `index.html`; ask if ambiguous). Remove it.
 Clean up orphaned styles in `style.css` and orphaned primitives in
 `runtime.js` that are no longer referenced. Remove orphaned assets from
 `data/` and `assets/`. Record as a `remove` event.
 
-### `/doc show`
+### `/inkling show`
 
 ```
 open <current-doc>/index.html
 ```
 
-### `/doc render <source.md>` (seed convenience)
+### `/inkling render <source.md>` (seed convenience)
 
-1. Treat as `/doc new` with the source's H1 as the title.
+1. Treat as `/inkling new` with the source's H1 as the title.
 2. Then internally process each `##` section in the source as a synthetic
-   `/doc add` event, recorded in the event log as `verb: "add", origin: "seed:<source-path>"`.
+   `/inkling add` event, recorded in the event log as `verb: "add", origin: "seed:<source-path>"`.
 3. The resulting doc behaves identically to one built conversationally — the
    event log just shows the seed events all at the same timestamp.
 
-### `/doc replay [<slug>]`
+### `/inkling replay [<slug>]`
 
 Move the existing folder aside (`.bak`). Re-execute `events[]` from scratch
 into a fresh folder. If the resulting folder matches the pre-replay state
@@ -257,7 +257,7 @@ not, surface the diff to the user and let them decide whether the divergence
 is a manual edit (informational) or a recording bug (file an issue in the
 manifest's `notes`).
 
-### `/doc freeze [<slug>]`
+### `/inkling freeze [<slug>]`
 
 Read all of `index.html`, `style.css`, `runtime.js`, and inline every asset
 as base64 or data URLs where possible. Write to
@@ -636,9 +636,9 @@ Then tell the user what changed and offer `open <output-dir>/index.html`.
   say X"*. The agent recognizes the intent and silently routes to the right
   internal verb. The verbs (`new`, `add`, `edit`, `remove`, `show`, `render`,
   `replay`, `freeze`) are this skill's *internal mechanics*, not the user's
-  syntax. Explicit `/doc <verb>` invocations are honored as a power-user
+  syntax. Explicit `/inkling <verb>` invocations are honored as a power-user
   escape hatch, but never demanded.
-- **Auto-invoke on intent match, do not wait for `/doc`.** When the user
+- **Auto-invoke on intent match, do not wait for `/inkling`.** When the user
   describes wanting to create, extend, edit, view, or reshape an
   HTML/interactive document — by any phrasing — invoke this skill silently.
   See the intent recognition table earlier in this file.

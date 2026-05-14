@@ -42,7 +42,7 @@ You'll need [Claude Code](https://claude.com/claude-code) installed first.
 
 The whole point of `inkling` is that you talk to the agent instead of typing commands. The install works the same way. Open Claude Code in any folder and paste this:
 
-> Hey, please install the **inkling** skill from `https://github.com/MeetVys/inkling`. It's a Claude Code skill that adds a conversational HTML doc builder. Fetch `skill/SKILL.md` from the repo and put it at `~/.claude/skills/doc/SKILL.md`. After it's installed, tell me three example prompts I can use to build my first doc.
+> Hey, please install the **inkling** skill from `https://github.com/MeetVys/inkling`. It's a Claude Code skill that adds a conversational HTML doc builder. Fetch `skill/SKILL.md` from the repo and put it at `~/.claude/skills/inkling/SKILL.md`. After it's installed, tell me three example prompts I can use to build my first doc.
 
 Claude will fetch the skill, drop it in the right place, and walk you through your first prompt. Done in one message.
 
@@ -52,23 +52,23 @@ Claude will fetch the skill, drop it in the right place, and walk you through yo
 The agent has `Bash`, `Read`, and `Write` tools by default — fetching one file from GitHub and writing it to a known path is exactly what those tools are for. No special MCP server, no plugin, no permissions to grant beyond what Claude Code already has.
 </details>
 
-### If you'd rather run a command
+### Or, the command form (same install, just typed)
 
-For non-Claude-Code contexts (a headless server, a CI step, scripting), the same install via curl:
+If you prefer typing a command yourself — or you want to drop this into a setup script, a Dockerfile, or a fresh machine — paste this into your terminal:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/MeetVys/inkling/main/install.sh | bash
 ```
 
-Or manually:
+You can also paste that command into Claude Code and ask it to run it for you — same result either way. If you'd rather see what's happening step by step:
 
 ```bash
 git clone https://github.com/MeetVys/inkling.git
-mkdir -p ~/.claude/skills/doc
-cp inkling/skill/SKILL.md ~/.claude/skills/doc/SKILL.md
+mkdir -p ~/.claude/skills/inkling
+cp inkling/skill/SKILL.md ~/.claude/skills/inkling/SKILL.md
 ```
 
-Either path: the skill auto-loads on next Claude Code session.
+Any of these paths: the skill auto-loads on next Claude Code session.
 
 ## Quickstart
 
@@ -100,7 +100,7 @@ Keep going. *"Add a section about what we changed."* *"Move the chart above the 
 
 - 📖 **[Live tutorial](https://meetvys.github.io/inkling/)** — the interactive walkthrough that brought you here
 - 🌱 **[Vision doc example](https://meetvys.github.io/inkling/examples/vision/)** — a project's vision rendered as an `inkling` artifact
-- 🛠 **[/doc explainer](https://meetvys.github.io/inkling/examples/doc-explained/)** — the skill explained as one of its own outputs
+- 🛠 **[inkling explainer](https://meetvys.github.io/inkling/examples/doc-explained/)** — the skill explained as one of its own outputs
 
 ## How it works under the hood
 

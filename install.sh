@@ -6,7 +6,7 @@
 
 set -euo pipefail
 
-SKILL_DEST="${HOME}/.claude/skills/doc"
+SKILL_DEST="${HOME}/.claude/skills/inkling"
 SKILL_FILE="${SKILL_DEST}/SKILL.md"
 REPO_RAW="https://raw.githubusercontent.com/MeetVys/inkling/main"
 
@@ -29,7 +29,7 @@ echo "  destination:  ${SKILL_FILE}"
 
 # Warn if a previous install exists
 if [[ -f "${SKILL_FILE}" ]]; then
-  echo "  ⚠️  An existing /doc skill is installed."
+  echo "  ⚠️  An existing inkling skill is installed."
   read -r -p "    Overwrite? [y/N] " response
   if [[ ! "${response}" =~ ^[Yy]$ ]]; then
     echo "  aborted."
