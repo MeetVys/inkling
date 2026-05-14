@@ -38,13 +38,29 @@ See [`DESIGN.md`](DESIGN.md) for the full design philosophy and contracts.
 
 You'll need [Claude Code](https://claude.com/claude-code) installed first.
 
-**One-liner:**
+### Ask Claude to install it (recommended)
+
+The whole point of `inkling` is that you talk to the agent instead of typing commands. The install works the same way. Open Claude Code in any folder and paste this:
+
+> Hey, please install the **inkling** skill from `https://github.com/MeetVys/inkling`. It's a Claude Code skill that adds a conversational HTML doc builder. Fetch `skill/SKILL.md` from the repo and put it at `~/.claude/skills/doc/SKILL.md`. After it's installed, tell me three example prompts I can use to build my first doc.
+
+Claude will fetch the skill, drop it in the right place, and walk you through your first prompt. Done in one message.
+
+<details>
+<summary>Why this works (one line)</summary>
+
+The agent has `Bash`, `Read`, and `Write` tools by default — fetching one file from GitHub and writing it to a known path is exactly what those tools are for. No special MCP server, no plugin, no permissions to grant beyond what Claude Code already has.
+</details>
+
+### If you'd rather run a command
+
+For non-Claude-Code contexts (a headless server, a CI step, scripting), the same install via curl:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/MeetVys/inkling/main/install.sh | bash
 ```
 
-**Or manually:**
+Or manually:
 
 ```bash
 git clone https://github.com/MeetVys/inkling.git
@@ -52,7 +68,7 @@ mkdir -p ~/.claude/skills/doc
 cp inkling/skill/SKILL.md ~/.claude/skills/doc/SKILL.md
 ```
 
-That's it. The skill auto-loads on next Claude Code session.
+Either path: the skill auto-loads on next Claude Code session.
 
 ## Quickstart
 
