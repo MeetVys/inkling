@@ -81,16 +81,52 @@
         "originality": "9/10 — chassis itself is invented (conversation-spine), 6 new structural shapes, 4 new behavioral primitives. None of the starter visual vocabulary was reached for as a primary frame."
       },
       "summary": "Created a tutorial doc using a conversation-spine chassis — the page itself dramatises the primary flow it teaches. Invented six structures (chassis, file-chips, anatomy tree, compare tabs, try-it grid, meta event-log footer) and four behaviors (flowStepper, folderAnatomy, toggleCompare, eventLogReveal). The eventLogReveal makes the doc read its own manifest — the tool teaches itself."
+    },
+    {
+      "n": 2,
+      "ts": "2026-05-14T22:30:00Z",
+      "verb": "edit",
+      "instruction": "Update the inkling tutorial doc. Instead of being just a tutorial, make it a proper landing page. Talk about the problem, the solution, keep tutorial and examples. The 'talk to your docs' line is too cute — focus on 'sky is the limit', interactive, aesthetic, computational, soothing to eye and more.",
+      "origin": "user",
+      "files_touched": ["index.html", "style.css", "doc-source.json"],
+      "assets_added": [],
+      "assets_removed": [],
+      "structures_used": ["hero", "compare", "flow-stepper", "convo", "anatomy", "try-it", "meta-foot"],
+      "structures_invented": [
+        {
+          "name": "problem-grid",
+          "shape": "2-column responsive grid of bordered cards. Each card has a serif-display strong label followed by 1-2 prose sentences. Used to name the markdown ceiling in six concrete examples.",
+          "purpose": "Make the problem visceral with named scenarios (perf reports, architecture docs, decision walks, learning notes, vision docs, alternatives) instead of abstract complaints."
+        },
+        {
+          "name": "pillars-grid",
+          "shape": "5-column responsive grid (5 → 2 → 1 across breakpoints). Each card has a mono-styled number eyebrow, a serif-display H3, and a one-line muted-prose body. Hover lifts and changes border to clay.",
+          "purpose": "Make the five-axis contract (Interactive, Computational, Aesthetic, Warm, Originality) the visual centerpiece of the Solution section — readable in 10 seconds, scrollable past in 2."
+        },
+        {
+          "name": "examples-list",
+          "shape": "Vertical stack of full-width clickable cards. Each card has a clay-dark serif title and a prose body; hover lifts and recolors the border.",
+          "purpose": "Surface the three reference renders explicitly with honest one-line notes per example. Previously the examples were only discoverable via the gallery sub-page and a buried compare reference."
+        }
+      ],
+      "behaviors_used": ["flowStepper", "folderAnatomy", "toggleCompare", "eventLogReveal"],
+      "behaviors_invented": [],
+      "event_audit": {
+        "originality": "8/10 — three new structural shapes invented for the Problem/Solution/Examples sections. No new behavioral primitives this event (existing four primitives cover the new sections). The pillars-grid is the strongest of the three — it makes the contract visible at a glance."
+      },
+      "summary": "Restructured the page from tutorial-only to proper landing: Hero with 'no ceiling' framing (replacing the too-cute 'talk to your docs'), then Problem section naming six concrete ways markdown caps thinking docs, then Solution section centered on a new five-pillar grid, then existing tutorial sections preserved as 'how it actually works', then an Examples teaser linking to the gallery. Removed the redundant compare section (its content moved into Problem). Invented three structural shapes (problem-grid, pillars-grid, examples-list)."
     }
   ],
 
+  "last_event_at": "2026-05-14T22:30:00Z",
+
   "doc_audit": {
-    "interactive": "9/10 — flow stepper, folder anatomy, compare tabs, focus toggle, print, scroll progress, contenteditable hero. Reader has at least 15 distinct interactions available.",
-    "computational": "7/10 — eventLogReveal fetches and parses the manifest; the compare panel computes funnel percentages in real markup. No reactive CSV binding in this doc itself (the *demo* shows it; the tutorial is about the system).",
-    "aesthetic": "8/10 — warm-notebook tokens carried; chassis-fresh layout; typographic hierarchy holds across hero, sections, and conversation; clay and sage accents used purposefully.",
-    "warm": "9/10 — paper tones, Fraunces display, Source Serif body, gentle interactions, generous spacing. Reads like a notebook page, not a SaaS landing.",
-    "originality": "9/10 — primary chassis is invented; five other structural shapes invented; four behavioral primitives invented. Zero starter-vocabulary components reached for as the doc's frame."
+    "interactive": "9/10 — flow stepper, folder anatomy, compare tabs, focus toggle, print, scroll progress, contenteditable hero, plus three new card grids with hover states. 18+ distinct interactions.",
+    "computational": "7/10 — eventLogReveal fetches and parses the manifest; compare panel computes funnel percentages. Still no reactive CSV binding inside this doc itself.",
+    "aesthetic": "9/10 — warm-notebook tokens; rich typographic hierarchy across hero, problem, solution, tutorial, examples; clay/sage accents used consistently; new pillars-grid and problem-grid land cleanly within the existing palette.",
+    "warm": "9/10 — paper tones, Fraunces display, Source Serif body, gentle interactions, generous spacing, the warmth doesn't break across the new sections.",
+    "originality": "9/10 — primary chassis invented (conversation-spine), eight structural shapes invented across two events (file-chips, anatomy tree, compare tabs, try-it grid, meta event-log footer, problem-grid, pillars-grid, examples-list), four behavioral primitives invented. Page now serves as both tutorial and landing without templating either job."
   },
 
-  "notes": "First doc rendered under the v0.2 conversational schema. Validates the contract end to end: event log structure, structures_invented + behaviors_invented populated, doc_audit recomputed, chassis decided lazily (here: on the new turn itself because the user's instruction was rich enough to design from). Two existing v0 docs (2026-05-14-vision, 2026-05-14-doc-explained) are pending manifest migration; should be done on next op against them."
+  "notes": "First doc rendered under the v0.2 conversational schema; first to receive an /inkling edit event. Validates the conversational contract end to end: event log accepts second event cleanly, structures_invented appended per event, doc_audit recomputed against the full doc state, event_audit captures per-event originality. Two existing v0 docs (2026-05-14-vision, 2026-05-14-doc-explained) are still pending manifest migration; will be done on next op against them."
 }

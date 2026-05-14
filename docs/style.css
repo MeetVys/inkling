@@ -478,6 +478,117 @@ code {
 .compare .doc-panel .demo-chart .label { color: var(--ink-muted); }
 .compare .doc-panel .demo-chart .val { color: var(--clay-dark); text-align: right; }
 
+/* invented: problem-grid — six cards naming the markdown ceiling */
+.problem-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 22px;
+}
+.problem-grid li {
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: var(--ink);
+  padding: 18px 22px;
+  background: var(--paper-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+}
+.problem-grid li strong {
+  color: var(--clay-dark);
+  display: block;
+  margin-bottom: 6px;
+  font-family: var(--serif-display);
+  font-weight: 600;
+  font-size: 17.5px;
+  letter-spacing: -0.005em;
+}
+.problem-grid li em {
+  color: var(--clay);
+  font-style: italic;
+}
+
+/* invented: pillars-grid — the five-axis contract, one card each */
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+  margin-top: 28px;
+}
+.pillars-grid .pillar {
+  background: var(--paper-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 22px 18px;
+  box-shadow: 0 14px 28px rgba(87, 60, 26, 0.08);
+  transition: transform 160ms ease, border-color 160ms ease;
+}
+.pillars-grid .pillar:hover {
+  transform: translateY(-3px);
+  border-color: var(--clay);
+}
+.pillars-grid .pillar-n {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--clay);
+  letter-spacing: 0.16em;
+  margin-bottom: 10px;
+}
+.pillars-grid h3 {
+  font-family: var(--serif-display);
+  font-weight: 600;
+  font-size: 19px;
+  margin: 0 0 10px;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.pillars-grid p {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink-muted);
+  margin: 0;
+}
+.pillars-grid p em { color: var(--clay-dark); font-style: italic; }
+
+/* invented: examples-list — three reference renders linked */
+.examples-list {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 0;
+  display: grid;
+  gap: 14px;
+}
+.examples-list li {
+  background: var(--paper-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  transition: transform 140ms ease, border-color 140ms ease;
+}
+.examples-list li:hover {
+  border-color: var(--clay);
+  transform: translateY(-2px);
+}
+.examples-list li a {
+  display: block;
+  padding: 20px 24px;
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 15.5px;
+  line-height: 1.55;
+}
+.examples-list li a:hover { color: var(--ink); }
+.examples-list li a strong {
+  color: var(--clay-dark);
+  display: block;
+  margin-bottom: 6px;
+  font-family: var(--serif-display);
+  font-weight: 600;
+  font-size: 19px;
+  letter-spacing: -0.01em;
+}
+
 /* try-it section */
 .try-it {
   display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
@@ -558,5 +669,11 @@ code {
   .convo .turn { grid-template-columns: 1fr; }
   .anatomy { grid-template-columns: 1fr; }
   .try-it { grid-template-columns: 1fr; }
+  .pillars-grid { grid-template-columns: 1fr 1fr; }
+  .problem-grid { grid-template-columns: 1fr; }
   .shell { padding: 0 20px; }
+}
+
+@media (max-width: 600px) {
+  .pillars-grid { grid-template-columns: 1fr; }
 }

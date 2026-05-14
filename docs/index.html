@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="A conversational tutorial for inkling. Open Claude Code, talk in plain English, watch a live interactive HTML doc grow on disk turn by turn." />
-    <title>inkling — A Friendly Tutorial</title>
+    <meta name="description" content="inkling — a Claude Code skill that builds HTML thinking documents with no ceiling. Interactive, computational, aesthetic, warm. Whatever the doc earns. Built turn-by-turn by your agent as you think out loud." />
+    <title>inkling — no ceiling on your docs</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -36,22 +36,179 @@
       <!-- HERO -->
       <section class="hero" aria-labelledby="title">
         <div>
-          <div class="eyebrow">A tutorial that is itself the tool</div>
-          <h1 id="title" contenteditable="true">Talk to your docs.<br />They will build themselves.</h1>
+          <div class="eyebrow">your documents · no ceiling</div>
+          <h1 id="title" contenteditable="true">No ceiling on your docs.</h1>
           <p class="lede" contenteditable="true">
-            inkling is a conversational doc builder living inside Claude Code.
-            You speak normally. The agent designs and edits a real folder of HTML, CSS,
-            JavaScript, and data on your disk. Every doc is interactive, computational,
-            aesthetic, and warm — and grows turn by turn as you think out loud.
+            Markdown caps what a thinking document can do. <strong>inkling doesn't.</strong>
+            Your perf report renders its chart from a CSV. Your architecture explains itself
+            on click. Your learning note is a real notebook, not a memo. Interactive.
+            Computational. Aesthetic. Warm. Whatever the doc earns — built turn-by-turn by
+            your agent as you think out loud.
           </p>
         </div>
         <aside class="cta" aria-label="Try this exact prompt">
-          <div class="label">Type this in Claude Code</div>
+          <div class="label">Try this in Claude Code</div>
           <div class="prompt" contenteditable="true">
             Hey, create an HTML doc that explains the Q1 onboarding revamp. Use a flowchart for the funnel and a chart for the drop-off CSV I'm about to paste.
           </div>
-          <p class="note">No slash commands. No markup. Just say what you want — the agent does the rest.</p>
+          <p class="note">No slash commands. No markup. The agent designs the doc the content earns.</p>
         </aside>
+      </section>
+
+      <!-- PROBLEM -->
+      <section class="section" aria-labelledby="problem-h">
+        <div class="eyebrow">the problem</div>
+        <h2 id="problem-h">Markdown is a ceiling. Your thinking deserves more.</h2>
+        <p class="intro">
+          You write the doc. The numbers go into a static table because markdown can't chart them.
+          The architecture goes into ASCII art because markdown can't render diagrams.
+          The decision tree gets flattened into bullets. The CSV gets pasted as a code block.
+          The doc ships. It gets archived. You never reopen it — because there's nothing
+          to reopen <em>into</em>.
+        </p>
+
+        <ul class="problem-grid">
+          <li>
+            <strong>Perf reports</strong>
+            with raw numbers in a static table when they deserved a chart bound to the
+            source data — edit the CSV, watch the chart move.
+          </li>
+          <li>
+            <strong>Architecture docs</strong>
+            that describe systems in prose because markdown can't show a clickable
+            diagram with click-to-explain panels.
+          </li>
+          <li>
+            <strong>Decision walks</strong>
+            flattened into nested bullets because there's no way to actually <em>walk</em>
+            a decision tree in markdown.
+          </li>
+          <li>
+            <strong>Learning notes</strong>
+            that read like transcripts. No glossary popovers, no inline quiz, no
+            interactive concept map. Just paragraphs.
+          </li>
+          <li>
+            <strong>Vision docs</strong>
+            that get shared once and never reopened. The format sets the ceiling for
+            how alive the doc can feel — and markdown's ceiling is flat.
+          </li>
+          <li>
+            <strong>The alternatives fail differently.</strong>
+            Notion and Observable live on someone else's server. Idyll requires
+            authoring a separate markup language. Claude Artifacts disappear with the
+            chat. None of them give you a self-contained, portable, archive-worthy
+            artifact that runs from your filesystem.
+          </li>
+        </ul>
+
+        <p class="intro" style="margin-top: 40px; margin-bottom: 24px;">
+          Below is the same Q1 funnel rendered two ways — flip the tab and see what
+          the format actually costs you.
+        </p>
+
+        <div class="compare" data-compare>
+          <div class="tabs" role="tablist">
+            <button class="tab" type="button" data-key="md" aria-pressed="true">Markdown world</button>
+            <button class="tab" type="button" data-key="doc">inkling world</button>
+          </div>
+          <div class="panels">
+            <div class="panel md-panel" data-key="md" data-active="true"># Q1 Onboarding Funnel
+
+The funnel has four steps. Counts shown below.
+
+| Step      | Users |
+|-----------|-------|
+| Landing   | 4200  |
+| Signup    | 2100  |
+| Verify    | 900   |
+| Activate  | 540   |
+
+The biggest drop-off is between Verify and Activate (40% loss).</div>
+            <div class="panel doc-panel" data-key="doc" data-active="false">
+              <h3 class="demo-title">Q1 Onboarding Funnel</h3>
+              <p class="demo-prose">The funnel has four steps. Activation lands at <strong style="color: var(--clay-dark);">12.9%</strong> of Landing.</p>
+              <div class="demo-chart" aria-label="Funnel chart, conversion percentages">
+                <div class="row">
+                  <span class="label">Landing</span>
+                  <div class="bar" style="width: 100%;"></div>
+                  <span class="val">100%</span>
+                </div>
+                <div class="row">
+                  <span class="label">Signup</span>
+                  <div class="bar" style="width: 50%;"></div>
+                  <span class="val">50.0%</span>
+                </div>
+                <div class="row">
+                  <span class="label">Verify</span>
+                  <div class="bar" style="width: 21.4%;"></div>
+                  <span class="val">21.4%</span>
+                </div>
+                <div class="row">
+                  <span class="label">Activate</span>
+                  <div class="bar" style="width: 12.9%;"></div>
+                  <span class="val">12.9%</span>
+                </div>
+              </div>
+              <p class="demo-prose" style="font-size: 14px; color: var(--ink-muted);">
+                Edit <code>data/funnel.csv</code> — these bars update on reload.
+                That's the difference: data is bound, not pasted.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SOLUTION -->
+      <section class="section" aria-labelledby="solution-h">
+        <div class="eyebrow">the solution</div>
+        <h2 id="solution-h">Let the agent build the doc your thinking deserves.</h2>
+        <p class="intro">
+          inkling is a Claude Code skill. You describe the document in natural language —
+          no markup, no slash commands. The agent designs the chassis for <em>this specific
+          doc</em>, invents the structural shapes it needs, writes the styles, wires the
+          interactions, parses your data, and renders a folder of HTML + CSS + JS + data
+          you can open offline, archive forever, or share.
+        </p>
+        <p class="intro">
+          Every render must hit five axes. <strong>None are negotiable.</strong>
+          If any axis falls below threshold, the agent fixes it before declaring done.
+        </p>
+
+        <div class="pillars-grid">
+          <div class="pillar">
+            <div class="pillar-n">01</div>
+            <h3>Interactive</h3>
+            <p>The doc reacts. Click-to-explain on diagrams, decision walks, drawers, focus mode, scroll-spy, glossary popovers. Things markdown literally cannot do.</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar-n">02</div>
+            <h3>Computational</h3>
+            <p>The doc computes. Inline CSV parsing renders charts. Decision trees walk from source data. Numbers update when the data changes. Bound, not pasted.</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar-n">03</div>
+            <h3>Aesthetic</h3>
+            <p>Typographic care, layout discipline, restraint. Real serif type for prose, mono for code, a warm-notebook palette inherited across every doc in the kit.</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar-n">04</div>
+            <h3>Warm</h3>
+            <p>Paper tones, gentle interactions, no chrome-junk. The doc invites reopening — it reads like a notebook page, not a SaaS landing.</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar-n">05</div>
+            <h3>Originality</h3>
+            <p>Every render must invent at least one structural shape the kit hasn't seen. No template menu — the agent designs what <em>this</em> doc earns. Below 5/10 is a hard fail.</p>
+          </div>
+        </div>
+
+        <p class="intro" style="margin-top: 44px;">
+          The rest of this page shows how it actually works — the primary flow, a
+          typical session, what a doc folder looks like inside, and the prompts to paste
+          into Claude Code to start your own. This page was built by inkling. Scroll to
+          the bottom to see its own event log.
+        </p>
       </section>
 
       <!-- FLOW -->
@@ -234,66 +391,43 @@
         </div>
       </section>
 
-      <!-- COMPARE -->
-      <section class="section" aria-labelledby="compare-h">
-        <div class="eyebrow">Why not just Markdown?</div>
-        <h2 id="compare-h">The same content, two formats</h2>
+      <!-- EXAMPLES TEASER -->
+      <section class="section" aria-labelledby="examples-h">
+        <div class="eyebrow">examples</div>
+        <h2 id="examples-h">Three docs inkling has rendered.</h2>
         <p class="intro">
-          Toggle between Markdown and inkling views of the same Q1 funnel. The
-          Markdown version is what you'd get from a standard agent. The inkling
-          version is what this tool produces.
+          Each link below opens a real inkling artifact. Read the
+          <code>doc-source.json</code> inside each folder to see the event log that
+          produced it — provenance is part of every doc.
         </p>
 
-        <div class="compare" data-compare>
-          <div class="tabs" role="tablist">
-            <button class="tab" type="button" data-key="md" aria-pressed="true">Markdown world</button>
-            <button class="tab" type="button" data-key="doc">inkling world</button>
-          </div>
-          <div class="panels">
-            <div class="panel md-panel" data-key="md" data-active="true"># Q1 Onboarding Funnel
-
-The funnel has four steps. Counts shown below.
-
-| Step      | Users |
-|-----------|-------|
-| Landing   | 4200  |
-| Signup    | 2100  |
-| Verify    | 900   |
-| Activate  | 540   |
-
-The biggest drop-off is between Verify and Activate (40% loss).</div>
-            <div class="panel doc-panel" data-key="doc" data-active="false">
-              <h3 class="demo-title">Q1 Onboarding Funnel</h3>
-              <p class="demo-prose">The funnel has four steps. Activation lands at <strong style="color: var(--clay-dark);">12.9%</strong> of Landing.</p>
-              <div class="demo-chart" aria-label="Funnel chart, conversion percentages">
-                <div class="row">
-                  <span class="label">Landing</span>
-                  <div class="bar" style="width: 100%;"></div>
-                  <span class="val">100%</span>
-                </div>
-                <div class="row">
-                  <span class="label">Signup</span>
-                  <div class="bar" style="width: 50%;"></div>
-                  <span class="val">50.0%</span>
-                </div>
-                <div class="row">
-                  <span class="label">Verify</span>
-                  <div class="bar" style="width: 21.4%;"></div>
-                  <span class="val">21.4%</span>
-                </div>
-                <div class="row">
-                  <span class="label">Activate</span>
-                  <div class="bar" style="width: 12.9%;"></div>
-                  <span class="val">12.9%</span>
-                </div>
-              </div>
-              <p class="demo-prose" style="font-size: 14px; color: var(--ink-muted);">
-                Edit <code>data/funnel.csv</code> — these bars update on reload.
-                That's the difference: data is bound, not pasted.
-              </p>
-            </div>
-          </div>
-        </div>
+        <ul class="examples-list">
+          <li>
+            <a href="./examples/vision/">
+              <strong>Vision doc</strong>
+              A project's vision rendered as an inkling artifact. Uses the starter
+              visual vocabulary heavily; kept here as an honest reference for what
+              the warm-notebook tokens look like and where templater drift can
+              creep in (this render predates the originality contract).
+            </a>
+          </li>
+          <li>
+            <a href="./examples/doc-explained/">
+              <strong>The inkling skill explained</strong>
+              A learning-shaped doc with inline charts, glossary popovers, and
+              click-to-explain wiring. Demonstrates behavioral invention at the
+              runtime layer — <code>parseCsv</code>, <code>renderBarChart</code>,
+              <code>clickToExplain</code>, <code>glossary</code> all written fresh.
+            </a>
+          </li>
+          <li>
+            <a href="./examples/">
+              <strong>Full gallery →</strong>
+              All three reference renders side-by-side with originality scores and
+              one-line notes on what each one demonstrates.
+            </a>
+          </li>
+        </ul>
       </section>
 
       <!-- TRY IT -->
