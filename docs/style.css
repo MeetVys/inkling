@@ -478,6 +478,171 @@ code {
 .compare .doc-panel .demo-chart .label { color: var(--ink-muted); }
 .compare .doc-panel .demo-chart .val { color: var(--clay-dark); text-align: right; }
 
+/* invented: funnel — reactive chart that proves the four pillars in one component */
+.compare .doc-panel .funnel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.compare .doc-panel .funnel-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.compare .doc-panel .funnel-title {
+  font-family: var(--serif-display);
+  font-weight: 600;
+  font-size: 24px;
+  margin: 0 0 4px;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.compare .doc-panel .funnel-sub {
+  font-size: 13px;
+  color: var(--ink-muted);
+  margin: 0;
+  font-family: var(--mono);
+  letter-spacing: 0.02em;
+}
+.compare .doc-panel .funnel-toggle {
+  display: inline-flex;
+  background: var(--paper-deep);
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 3px;
+}
+.compare .doc-panel .funnel-toggle button {
+  background: transparent;
+  border: 0;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  cursor: pointer;
+  transition: all 140ms ease;
+}
+.compare .doc-panel .funnel-toggle button[aria-pressed="true"] {
+  background: var(--clay);
+  color: var(--paper-soft);
+  box-shadow: 0 4px 10px rgba(115, 53, 33, 0.22);
+}
+
+.compare .doc-panel .funnel-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.compare .doc-panel .funnel-row {
+  display: grid;
+  grid-template-columns: 90px 1fr 70px;
+  align-items: center;
+  gap: 14px;
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background 140ms ease, border-color 140ms ease, transform 140ms ease;
+}
+.compare .doc-panel .funnel-row:hover {
+  background: var(--paper-deep);
+  border-color: var(--line);
+  transform: translateX(2px);
+}
+.compare .doc-panel .funnel-row[aria-pressed="true"] {
+  background: var(--paper-deep);
+  border-color: var(--clay);
+}
+.compare .doc-panel .funnel-step {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink-muted);
+  letter-spacing: 0.04em;
+}
+.compare .doc-panel .funnel-bar-wrap {
+  height: 22px;
+  background: rgba(159, 79, 50, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+.compare .doc-panel .funnel-bar {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--clay), var(--ochre));
+  border-radius: 999px;
+  transition: width 320ms cubic-bezier(.4, .14, .3, 1);
+}
+.compare .doc-panel .funnel-val {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--clay-dark);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.compare .doc-panel .funnel-drawer {
+  background: var(--paper-deep);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-md);
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 280ms ease, padding 200ms ease;
+}
+.compare .doc-panel .funnel-drawer[data-open="true"] {
+  padding: 16px 20px;
+  max-height: 300px;
+}
+.compare .doc-panel .funnel-drawer .drawer-title {
+  font-family: var(--serif-display);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--clay-dark);
+  letter-spacing: -0.005em;
+  margin-bottom: 8px;
+}
+.compare .doc-panel .funnel-drawer .drawer-body {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--ink);
+  margin: 0;
+}
+
+.compare .doc-panel .funnel-foot {
+  font-size: 13px;
+  color: var(--ink-muted);
+  margin: 0;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.compare .doc-panel .funnel-tip {
+  position: absolute;
+  pointer-events: none;
+  background: var(--ink);
+  color: var(--paper-soft);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  padding: 6px 10px;
+  border-radius: 6px;
+  opacity: 0;
+  transition: opacity 140ms ease;
+  white-space: nowrap;
+  z-index: 20;
+  box-shadow: 0 8px 18px rgba(48, 38, 28, 0.28);
+}
+
 /* invented: problem-grid — six cards naming the markdown ceiling */
 .problem-grid {
   list-style: none;

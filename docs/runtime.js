@@ -172,13 +172,118 @@
       });
   }
 
+  /* ─── invented: funnel ──────────────────────────────────────────── */
+  /* Reactive funnel chart. Reads inline JSON from <script id="funnel-data">,
+     computes percentages from raw counts (first row = 100% baseline), renders
+     SVG bars with hover tooltip, a raw/percent toggle, and per-row
+     click-to-explain drawer. The proof of the four pillars in one component:
+       - Interactive  : hover, toggle, click-to-explain
+       - Computational: percentages computed from data, not hardcoded
+       - Aesthetic    : inherits warm-notebook palette
+       - Warm         : gentle transitions, paper tones
+     Used by the compare panel to demonstrate what markdown literally cannot do. */
+  function funnel(rootSelector) {
+    const root = document.querySelector(rootSelector);
+    const dataEl = document.getElementById("funnel-data");
+    if (!root || !dataEl) return;
+    let data;
+    try { data = JSON.parse(dataEl.textContent); } catch (e) { return; }
+    if (!data.length) return;
+
+    const baseline = data[0].users; // first row is 100%
+    const enriched = data.map((d) => ({
+      ...d,
+      pct: (d.users / baseline) * 100,
+    }));
+
+    const barsEl = root.querySelector(".funnel-bars");
+    const tipEl = root.querySelector(".funnel-tip");
+    const drawerEl = root.querySelector(".funnel-drawer");
+    const drawerTitle = drawerEl.querySelector(".drawer-title");
+    const drawerBody = drawerEl.querySelector(".drawer-body");
+    const toggleEl = root.querySelector(".funnel-toggle");
+
+    let mode = "pct"; // 'pct' | 'raw'
+    let activeIdx = -1;
+
+    function fmtVal(d, m) {
+      return m === "pct" ? d.pct.toFixed(1) + "%" : d.users.toLocaleString();
+    }
+    function fmtBoth(d) {
+      return d.users.toLocaleString() + " users · " + d.pct.toFixed(1) + "% of " + enriched[0].step;
+    }
+
+    function render() {
+      barsEl.innerHTML = "";
+      enriched.forEach((d, i) => {
+        const row = document.createElement("button");
+        row.type = "button";
+        row.className = "funnel-row";
+        row.dataset.idx = String(i);
+        row.setAttribute("aria-pressed", String(i === activeIdx));
+        row.innerHTML =
+          '<span class="funnel-step">' + d.step + '</span>' +
+          '<span class="funnel-bar-wrap"><span class="funnel-bar" style="width:' + d.pct.toFixed(2) + '%"></span></span>' +
+          '<span class="funnel-val">' + fmtVal(d, mode) + '</span>';
+        row.addEventListener("mousemove", (ev) => showTip(ev, d));
+        row.addEventListener("mouseenter", (ev) => showTip(ev, d));
+        row.addEventListener("mouseleave", hideTip);
+        row.addEventListener("focus", (ev) => showTipForRow(row, d));
+        row.addEventListener("blur", hideTip);
+        row.addEventListener("click", () => openDrawer(i, d));
+        barsEl.appendChild(row);
+      });
+    }
+    function showTip(ev, d) {
+      tipEl.textContent = fmtBoth(d);
+      tipEl.style.opacity = "1";
+      const rect = root.getBoundingClientRect();
+      tipEl.style.left = (ev.clientX - rect.left + 14) + "px";
+      tipEl.style.top = (ev.clientY - rect.top + 14) + "px";
+    }
+    function showTipForRow(rowEl, d) {
+      tipEl.textContent = fmtBoth(d);
+      tipEl.style.opacity = "1";
+      const rect = root.getBoundingClientRect();
+      const rr = rowEl.getBoundingClientRect();
+      tipEl.style.left = (rr.right - rect.left + 12) + "px";
+      tipEl.style.top = (rr.top - rect.top + 4) + "px";
+    }
+    function hideTip() {
+      tipEl.style.opacity = "0";
+    }
+    function openDrawer(i, d) {
+      activeIdx = i;
+      const rows = barsEl.querySelectorAll(".funnel-row");
+      rows.forEach((r, j) => r.setAttribute("aria-pressed", String(j === i)));
+      drawerTitle.textContent = d.step + " — " + fmtBoth(d);
+      drawerBody.textContent = d.explain || "(no explanation recorded yet)";
+      drawerEl.setAttribute("data-open", "true");
+    }
+
+    if (toggleEl) {
+      toggleEl.querySelectorAll("button").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          mode = btn.dataset.mode;
+          toggleEl.querySelectorAll("button").forEach((b) =>
+            b.setAttribute("aria-pressed", String(b === btn))
+          );
+          render();
+        });
+      });
+    }
+
+    render();
+  }
+
   /* ─── boot ──────────────────────────────────────────────────────── */
   document.addEventListener("DOMContentLoaded", () => {
     flowStepper("[data-flow]");
     folderAnatomy("[data-anatomy]");
     toggleCompare("[data-compare]");
+    funnel("[data-funnel]");
     eventLogReveal("[data-event-log]");
   });
 
-  window.docKit = { flowStepper, folderAnatomy, toggleCompare, eventLogReveal };
+  window.docKit = { flowStepper, folderAnatomy, toggleCompare, funnel, eventLogReveal };
 })();

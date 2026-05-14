@@ -115,14 +115,44 @@
         "originality": "8/10 — three new structural shapes invented for the Problem/Solution/Examples sections. No new behavioral primitives this event (existing four primitives cover the new sections). The pillars-grid is the strongest of the three — it makes the contract visible at a glance."
       },
       "summary": "Restructured the page from tutorial-only to proper landing: Hero with 'no ceiling' framing (replacing the too-cute 'talk to your docs'), then Problem section naming six concrete ways markdown caps thinking docs, then Solution section centered on a new five-pillar grid, then existing tutorial sections preserved as 'how it actually works', then an Examples teaser linking to the gallery. Removed the redundant compare section (its content moved into Problem). Invented three structural shapes (problem-grid, pillars-grid, examples-list)."
+    },
+    {
+      "n": 3,
+      "ts": "2026-05-14T23:15:00Z",
+      "verb": "edit",
+      "instruction": "The compare panel illustrates the markdown ceiling but doesn't prove it. Replace the static bar chart on the inkling side with a real interactive funnel — hover tooltip, raw/percent toggle, click-to-explain drawer. The fix should itself BE the proof.",
+      "origin": "user",
+      "files_touched": ["index.html", "style.css", "runtime.js", "doc-source.json"],
+      "assets_added": [],
+      "assets_removed": [],
+      "structures_used": ["compare"],
+      "structures_invented": [
+        {
+          "name": "funnel chassis",
+          "shape": "Container with header (title + sub + toggle pill), bars region (button rows: step label + animated bar + value), explanation drawer (slides in below, max-height transition), italic footer, absolute-positioned tooltip overlay. The whole thing is a self-contained chart-with-context primitive.",
+          "purpose": "Replace the static hardcoded bars with a real component that proves the four pillars in one place. The chassis becomes a reusable shape for any funnel/conversion-data doc the kit renders in the future."
+        }
+      ],
+      "behaviors_used": ["toggleCompare"],
+      "behaviors_invented": [
+        {
+          "name": "funnel",
+          "purpose": "Reads inline JSON from <script id=\"funnel-data\">, computes percentages from raw counts (first row = baseline), renders SVG-free bars with three layered interactions: hover/focus shows a tooltip with both raw+percent values, the raw/percent toggle re-renders with smooth width transitions, clicking any row opens an explanation drawer with the per-step context. The chart reads its own data — no hardcoded widths, no static labels. Editing the inline JSON updates everything on reload.",
+          "appended_to": "runtime.js"
+        }
+      ],
+      "event_audit": {
+        "originality": "9/10 — new structural chassis (funnel) AND new behavioral primitive (funnel) invented for this event. Replaces an inert static-bars block that was the page's weakest demo. The interaction set (hover + toggle + click) is non-trivial — none of it existed in the kit before."
+      },
+      "summary": "Fixed the compare panel's central weakness. The inkling side was promising 'data is bound, not pasted' but was actually rendering hardcoded inline-style widths. Replaced with a real funnel primitive: hover any bar for raw count + conversion %, toggle between raw counts and percentages (computed from data, not hardcoded), click any row for a per-step explanation drawer. The panel now genuinely demonstrates what markdown cannot do — interactive, computational, aesthetic, warm in one visible component. Added matching styles (funnel-head, funnel-toggle, funnel-row, funnel-bar, funnel-drawer, funnel-tip). User caught the gap before posting publicly — the proof-vs-illustration distinction matters when the page is the pitch."
     }
   ],
 
-  "last_event_at": "2026-05-14T22:30:00Z",
+  "last_event_at": "2026-05-14T23:15:00Z",
 
   "doc_audit": {
-    "interactive": "9/10 — flow stepper, folder anatomy, compare tabs, focus toggle, print, scroll progress, contenteditable hero, plus three new card grids with hover states. 18+ distinct interactions.",
-    "computational": "7/10 — eventLogReveal fetches and parses the manifest; compare panel computes funnel percentages. Still no reactive CSV binding inside this doc itself.",
+    "interactive": "10/10 — flow stepper, folder anatomy, compare tabs, focus toggle, print, scroll progress, contenteditable hero, three card grids with hover states, plus the new funnel chart (hover tooltip, raw/percent toggle, click-to-explain drawer per row). 25+ distinct interactions across the page.",
+    "computational": "9/10 — eventLogReveal fetches the manifest; the new funnel primitive reads inline JSON, computes percentages from raw counts, re-renders on toggle, and resolves per-row explanations from the same data source. The page now computes in three distinct ways instead of one.",
     "aesthetic": "9/10 — warm-notebook tokens; rich typographic hierarchy across hero, problem, solution, tutorial, examples; clay/sage accents used consistently; new pillars-grid and problem-grid land cleanly within the existing palette.",
     "warm": "9/10 — paper tones, Fraunces display, Source Serif body, gentle interactions, generous spacing, the warmth doesn't break across the new sections.",
     "originality": "9/10 — primary chassis invented (conversation-spine), eight structural shapes invented across two events (file-chips, anatomy tree, compare tabs, try-it grid, meta event-log footer, problem-grid, pillars-grid, examples-list), four behavioral primitives invented. Page now serves as both tutorial and landing without templating either job."

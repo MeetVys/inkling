@@ -126,34 +126,28 @@ The funnel has four steps. Counts shown below.
 
 The biggest drop-off is between Verify and Activate (40% loss).</div>
             <div class="panel doc-panel" data-key="doc" data-active="false">
-              <h3 class="demo-title">Q1 Onboarding Funnel</h3>
-              <p class="demo-prose">The funnel has four steps. Activation lands at <strong style="color: var(--clay-dark);">12.9%</strong> of Landing.</p>
-              <div class="demo-chart" aria-label="Funnel chart, conversion percentages">
-                <div class="row">
-                  <span class="label">Landing</span>
-                  <div class="bar" style="width: 100%;"></div>
-                  <span class="val">100%</span>
+              <div class="funnel" data-funnel>
+                <div class="funnel-head">
+                  <div>
+                    <h3 class="funnel-title">Q1 Onboarding Funnel</h3>
+                    <p class="funnel-sub">Hover any bar. Click for context. Toggle the view.</p>
+                  </div>
+                  <div class="funnel-toggle" role="tablist" aria-label="Funnel view">
+                    <button type="button" data-mode="pct" aria-pressed="true">Conversion %</button>
+                    <button type="button" data-mode="raw" aria-pressed="false">Raw counts</button>
+                  </div>
                 </div>
-                <div class="row">
-                  <span class="label">Signup</span>
-                  <div class="bar" style="width: 50%;"></div>
-                  <span class="val">50.0%</span>
+                <div class="funnel-bars" aria-live="polite"></div>
+                <div class="funnel-drawer" data-open="false" role="region" aria-live="polite">
+                  <div class="drawer-title"></div>
+                  <p class="drawer-body"></p>
                 </div>
-                <div class="row">
-                  <span class="label">Verify</span>
-                  <div class="bar" style="width: 21.4%;"></div>
-                  <span class="val">21.4%</span>
-                </div>
-                <div class="row">
-                  <span class="label">Activate</span>
-                  <div class="bar" style="width: 12.9%;"></div>
-                  <span class="val">12.9%</span>
-                </div>
+                <p class="funnel-foot">
+                  Bars and labels are computed from the JSON below — the doc reads its own data.
+                  Markdown can't do any of this. Inkling treats it as the default.
+                </p>
+                <div class="funnel-tip" aria-hidden="true"></div>
               </div>
-              <p class="demo-prose" style="font-size: 14px; color: var(--ink-muted);">
-                Edit <code>data/funnel.csv</code> — these bars update on reload.
-                That's the difference: data is bound, not pasted.
-              </p>
             </div>
           </div>
         </div>
@@ -592,6 +586,29 @@ The biggest drop-off is between Verify and Activate (40% loss).</div>
           "Referenced by relative path in index.html",
           "Inlined as base64 by the freeze verb when needed"
         ]
+      }
+    ]</script>
+
+    <script type="application/json" id="funnel-data">[
+      {
+        "step": "Landing",
+        "users": 4200,
+        "explain": "4,200 visitors hit the landing page in Q1. Source mix: roughly 60% paid (LinkedIn + Google), 40% organic (blog + referrals). This is the baseline every downstream step is measured against."
+      },
+      {
+        "step": "Signup",
+        "users": 2100,
+        "explain": "50% of visitors started signup. The page-load → signup-start drop is dominated by visitors who weren't ready to commit — the form itself converts well once started. Hero CTA above the fold; secondary CTA in the pricing section."
+      },
+      {
+        "step": "Verify",
+        "users": 900,
+        "explain": "43% of signups verified their email. Biggest drop in the funnel. Suspects: deliverability (we saw 14% of verification emails route to Promotions in Gmail) and friction (Q1's verify step required a 6-digit code instead of magic link). Q2 plan: switch to magic link + warmed sending domain."
+      },
+      {
+        "step": "Activate",
+        "users": 540,
+        "explain": "60% of verified users completed activation (created their first project) in the same session. This is the strong part of the funnel — users who verify are committed. The remaining 40% mostly come back within 7 days; lifetime activation is closer to 78%."
       }
     ]</script>
 
