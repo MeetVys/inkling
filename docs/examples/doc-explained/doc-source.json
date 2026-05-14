@@ -4,12 +4,12 @@
   "renderer": "doc-skill@v0",
   "source": {
     "type": "markdown",
-    "path": "/Users/meetvyas/Desktop/Ideas/HTML_Docs/doc-explained.md",
+    "path": "doc-explained.md",
     "sha256": "261f81bdfb8838265a7793cf3cbe4a17885d5d666b65a3c6ec219c95bd3ea376"
   },
-  "output_dir": "/Users/meetvyas/Desktop/Ideas/HTML_Docs/docs/2026-05-14-doc-explained",
+  "output_dir": "docs/examples/doc-explained",
   "slug": "2026-05-14-doc-explained",
-  "title": "/doc — Explained",
+  "title": "inkling — Explained",
   "theme": "warm-notebook@v0",
   "doc_type_hint": "learning",
   "components_used": [

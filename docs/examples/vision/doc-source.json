@@ -4,12 +4,12 @@
   "renderer": "doc-skill@v0",
   "source": {
     "type": "markdown",
-    "path": "/Users/meetvyas/Desktop/Ideas/HTML_Docs/vision.md",
+    "path": "vision.md",
     "sha256": "96430c8165f9a2b21915eb917e11c6778ea6d022843bc8d5370295ec163ff726"
   },
-  "output_dir": "/Users/meetvyas/Desktop/Ideas/HTML_Docs/docs/2026-05-14-vision",
+  "output_dir": "docs/examples/vision",
   "slug": "2026-05-14-vision",
-  "title": "HTML Doc Kit — Vision",
+  "title": "inkling — Vision",
   "theme": "warm-notebook@v0",
   "doc_type_hint": "vision",
   "components_used": [
