@@ -331,8 +331,10 @@ pattern, ask:
 - **What data does this event reference?** A CSV, a JSON, a table, numeric
   lists, frequency counts? *Parse it and render it inline. Copy the data
   into `<doc>/data/` so the binding is reactive — editing the data file
-  updates the rendered output on reload.* Don't leave numbers in prose if a
-  chart would tell the story better.
+  updates the rendered output on reload, **and** inline a copy into
+  `index.html` so the chart still renders from `file://`.* See the
+  [Data binding contract](#data-binding-contract-must-work-from-file).
+  Don't leave numbers in prose if a chart would tell the story better.
 - **What structure does this event expose?** A system architecture? A
   decision tree? A timeline? A multi-axis comparison? A process flow? *Make
   the structure interactive — clicking should explain.*
@@ -397,7 +399,7 @@ pillars.
 | behavior | what it does | when to reach for it | runtime primitives |
 | --- | --- | --- | --- |
 | **`(invent)`** | **whatever this doc earns** | **always at least one new behavior per doc — top priority, not last resort** | **n/a — add a primitive to `runtime.js`** |
-| `chart` | parse inline CSV/JSON, render bar/line/scatter as inline SVG | doc references numeric data or counts | `parseCsv`, `renderBarChart` |
+| `chart` | parse inline CSV/JSON, render bar/line/scatter as inline SVG | doc references numeric data or counts | `loadData`, `parseCsv`, `renderBarChart` |
 | `arch-diagram` | clickable architecture diagram (SVG or HTML); clicking a node opens an explanation panel | doc has system structure to explain | `clickToExplain` |
 | `decision-walk` | branching decision tree; user clicks through choices and the doc walks the path | doc walks a "should I do X" thinking process | `decisionWalk` |
 | `timeline` | dated events on a horizontal axis, click to expand | doc has chronology worth exposing | `renderTimeline` |
@@ -463,6 +465,53 @@ the function* only when this doc uses it.
 Every significant `add` event should produce at least one new primitive OR
 one new structural shape. Empty event-level invention is acceptable only for
 trivial events (phrase tweak, date change).
+
+### Data binding contract (must work from `file://`)
+
+Two rules in this file pull against each other: charts bind to
+`<doc>/data/*` so edits stay reactive, **and** the folder must open from
+`file://`. Chromium refuses `fetch` of a sibling file under the `file:`
+scheme (`Fetch API cannot load ... URL scheme "file" is not supported`), so
+a chart that only fetches renders **empty** the moment a reader downloads
+the doc and opens it from disk. Serving over http hides this completely —
+hosted examples look correct while the standalone-artifact promise is
+broken for every person who saves the file.
+
+Every data-bound render therefore carries its data **twice**:
+
+1. **`<doc>/data/<name>.csv`** — the editable source of truth. Reactive
+   when the doc is served over http: edit the file, reload, the chart moves.
+2. **An inlined copy inside `index.html`** — a
+   `<script id="<name>Data" type="text/csv">` tag (or
+   `type="application/json"`) holding the same bytes, written at render time.
+
+The loader checks the protocol *before* it does anything:
+
+```js
+function loadData(path, inlineId){
+  var tag=document.getElementById(inlineId);
+  if(location.protocol==='file:'){            /* fetch is blocked here */
+    return Promise.resolve(tag?tag.textContent:'');
+  }
+  return fetch(path)
+    .then(function(r){ if(!r.ok) throw new Error('http '+r.status); return r.text(); })
+    .catch(function(){ return tag?tag.textContent:''; });
+}
+```
+
+Test `location.protocol` up front rather than relying only on `.catch`. A
+failed `file://` fetch still writes a red error to the console, and opening
+devtools is the first thing a sceptical reader does with a downloaded file.
+
+On any `add` or `edit` that changes a data file, rewrite the inlined copy in
+the **same event** so the two cannot drift, and list both paths in
+`files_touched`. `freeze` then inherits correctness for free: the inlined
+copy already lives in the HTML, so the frozen single file keeps rendering
+after it is moved away from `data/`.
+
+Self-check before declaring a data-bound event done: copy the doc's
+`index.html` (or the frozen file) to an empty directory, open it from disk,
+and confirm the chart still draws with a clean console.
 
 ### `index.html` contract
 
@@ -673,7 +722,10 @@ Then tell the user what changed and offer `open <output-dir>/index.html`.
   Inherit tokens. Author layout fresh per doc; extend per event within a doc.
 - **Data and assets live inside the doc folder.** Copy CSVs into
   `<doc>/data/`. Copy images into `<doc>/assets/`. The doc folder is
-  portable as a unit. Charts bind to local data so the binding is reactive.
+  portable as a unit. Charts bind to local data so the binding is reactive
+  — and carry an inlined copy of that data in `index.html`, because
+  `fetch` is blocked under `file://`. Never ship a chart that only
+  fetches. See the [Data binding contract](#data-binding-contract-must-work-from-file).
 - **No inline `style=""` attributes.** All styling lives in `style.css`.
 - **One stylesheet, one runtime, one HTML per doc.** No bundlers, no build
   step. The folder must open from `file://`.

@@ -141,6 +141,13 @@
     if (!root) return;
     const pre = root.querySelector("pre");
     if (!pre) return;
+    /* fetch is blocked under the file: scheme and logs a console error even
+       when caught, so check the protocol before asking for the manifest. */
+    if (location.protocol === "file:") {
+      pre.textContent =
+        "(manifest unavailable when opened via file://; this works when served over http)";
+      return;
+    }
     fetch("doc-source.json", { cache: "no-store" })
       .then((r) => {
         if (!r.ok) throw new Error("manifest not found");
