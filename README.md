@@ -2,6 +2,8 @@
 
 **Talk to your docs. They will build themselves.**
 
+![inkling building a doc: a prompt becomes an interactive HTML page, a pasted CSV becomes a funnel chart, then it freezes to a single file](assets/inkling-demo.gif)
+
 `inkling` is a conversational HTML doc builder for [Claude Code](https://claude.com/claude-code). Open Claude Code, say *"create an HTML doc for X"* in plain English, and the agent designs and edits a real folder of HTML, CSS, JavaScript, and data on your disk — turn by turn, as you think out loud.
 
 No slash commands. No markup. No templates. Every doc is **interactive, computational, aesthetic, and warm.**
