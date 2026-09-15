@@ -4,6 +4,16 @@
 
 ![inkling building a doc: a prompt becomes an interactive HTML page, a pasted CSV becomes a funnel chart, then it freezes to a single file](assets/inkling-demo.gif)
 
+Some documents aren't mostly words. An explainer, an HLD, a system design doc — they want
+diagrams, charts, flow charts, visual elements you can click into. HTML, CSS and JS are
+perfect for that, and always have been. The doc becomes much more than words.
+
+Hand-writing it was never practical. Nobody codes a stylesheet and an interactive SVG for
+an internal design doc — the hours don't justify it.
+
+Agents are very good at HTML, CSS and JS. That cost is gone. So why stay limited to a
+markdown file?
+
 `inkling` is a conversational HTML doc builder for [Claude Code](https://claude.com/claude-code). Open Claude Code, say *"create an HTML doc for X"* in plain English, and the agent designs and edits a real folder of HTML, CSS, JavaScript, and data on your disk — turn by turn, as you think out loud.
 
 No slash commands. No markup. No templates. Every doc is **interactive, computational, aesthetic, and warm.**
